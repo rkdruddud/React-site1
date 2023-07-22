@@ -1,0 +1,220 @@
+.navbar {
+    background: linear-gradient(90deg, #4f33ec 0%, #5f57d6 100%);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position:sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    max-width: 1500px;
+  }
+  
+  .navbar-logo {
+    color: #fff;
+    justify-self: start;
+    margin-left: 100px;
+    cursor:default;
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    text-align: end;
+  }
+  .navbar-logo-icon {
+    color: #fff;
+    justify-self: start;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .nav-menu {
+    
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    list-style: none;
+    text-align: center;
+    width: 60vw;
+    justify-content: end;
+    margin-right: 2rem;
+  }
+  
+  .nav-item {
+    height: 90px;
+  }
+  
+  .nav-links {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.5rem 2.5rem;
+    height: 100%;
+    margin-right: 20px;
+  }
+  
+ 
+  .fa-bars {
+    color: #fff;
+  }
+  
+  .menu-icon {
+    display: none;
+  }
+  .nav-links:hover {
+    border-bottom: 4px solid #fff;
+    transition: all 0.2s ease-out;
+    background-color: #fff;
+    color: #3224f5;
+    height: 36px;
+    margin-top: 30px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  
+  .nav-links-mobile {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    border-radius: 4px;
+    width: 80%;
+    text-decoration: none;
+    font-size: 1.0rem;
+    background-color: transparent;
+    color: #fff;
+    padding: 14px 20px;
+    border: 1px solid #fff;
+    transition: all 0.3s ease-out;
+  }
+  .nav-links-mobile:hover {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    border-radius: 4px;
+    width: 80%;
+    text-decoration: none;
+    font-size: 1.0rem;
+    background-color: #fff;
+    color: #3224f5;
+    padding: 14px 20px;
+    border: 1px solid #fff;
+    transition: all 0.3s ease-out;
+  }
+
+  .navbar-logo {
+    position: absolute;
+    color: #fff;
+    top: 0;
+    left: 0;
+    transform: translate(25%, 80%);
+  }
+  @media screen and (max-width: 950px) {
+    .NavbarItems {
+      position: relative;
+    }
+  
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 90vh;
+      position: absolute;
+      top: 60px;
+      left: -900%;
+      opacity: 1;
+      transition: all 0.5s ease;
+      justify-content: center;
+    }
+    .menu-close{
+        color: #fff;
+     
+    }
+    .menu-open {
+        color: #fff;
+    }
+  
+    .nav-menu.active {
+      background: #3224f5;
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
+    }
+  
+ 
+    .navbar-logo {
+      position: absolute;
+      size: 20px;
+      color: #fff;
+      top: 0;
+      left: 0;
+      transform: translate(25%, 80%);
+    }
+  
+    .menu-icon {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-100%, 60%);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+  
+    .fa-times {
+      color: #fff;
+      font-size: 2rem;
+    }
+
+    .nav-links {
+        text-align: center;
+        margin-top: 25px;
+        width: 100%;
+        display:block;
+        height: auto;
+        padding: 1rem;
+     
+      }
+    
+      .nav-links:hover {
+        background-color: #fff;
+        color: #3224f5;
+        border-radius: 0;
+      }
+    
+    .nav-links-mobile {
+      display: block;
+        position: relative;
+      
+        top: 10px;
+      text-align: center;  
+      border-radius: 4px;
+      width: 80%;
+      text-decoration: none;
+      font-size: 1.2rem;
+      background-color: transparent;
+      color: #fff;
+      padding: 14px 20px;
+      border: 1px solid #fff;
+      transition: all 0.3s ease-out;
+    }
+  
+    .nav-links-mobile:hover {
+      background: #fff;
+      color: #3224f5;
+      transition: 250ms;
+    }
+  }

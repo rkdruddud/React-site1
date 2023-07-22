@@ -1,0 +1,153 @@
+.RegistrationContainer{
+    position:absolute;
+    display: flex;
+ 
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/backgroundIMG.jpg");
+     flex-direction: column-reverse;
+     align-items: center;
+     object-fit: contain;
+     aspect-ratio: auto;
+    
+}
+
+.infoWrap {
+    position: absolute;
+    padding: 30px;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    display: block;
+    width: 30rem;
+    height: 50rem;
+    background-color: white;
+    box-shadow: 4px 3px 5px 3px rgba(128, 128, 128, 0.39);
+    border-radius: 4px;
+    
+}
+
+.infoinputWrap {
+    
+    display: inline-block;
+    width: 100%;
+    height: 29px;
+    border: none;
+    margin: 3%;
+
+    
+}
+
+.idBox {
+    display: inline-flex;
+    width: 100%;
+    height: 29px;
+}
+
+.id {
+    display: block;
+    width: 73%;
+    height: 29px;
+}
+
+.checkID{
+    display: block;
+    width: 20%;
+    height: 34.3px;
+   
+}
+.name {
+    width: 93%;
+    height: 29px;
+}
+
+.password {
+    width: 93%;
+    height: 29px;
+}
+
+.checkpassword {
+    width: 93%;
+    height: 29px;
+}
+
+.email{
+    width: 93%;
+    height: 29px;
+}
+
+
+.phonNumber {
+    width: 93%;
+    height: 29px;
+}
+
+.registbtnBox {
+    width: 100%;
+    height: 40px;
+}
+.registerbtn {
+    background: black;
+    color: white;
+    margin-top: 30px;
+    border: none;
+    width: 95%;
+    height: 36px;
+    cursor: pointer;
+}
+h3 {
+   
+    margin: 18px 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.textWrapBox{
+   
+    display: inline-flex;
+}
+
+.errorMSG {
+    margin: 20px 0 9px;
+    cursor: default;
+    display: inline;
+    color: red;
+    font-size: 10px;
+    margin-left: 10px;
+    height: 10px;
+}
+
+.texts{
+    cursor: default;
+}
+
+.inputTextName{
+    cursor: default;
+}
+
+.id::placeholder{
+    color: #c4c1c1;
+}
+
+.name::placeholder{
+    color: #c4c1c1;
+}
+
+.password::placeholder{
+    color: #c4c1c1;
+}
+
+.checkpassword::placeholder{
+    color: #c4c1c1;
+}
+
+.phonNumber::placeholder {
+    color: #c4c1c1;
+}
+
+.email::placeholder {
+    color: #c4c1c1;
+}

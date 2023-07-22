@@ -1,0 +1,91 @@
+.idContainer {
+    position:absolute;
+    display: flex;
+ 
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/backgroundIMG.jpg");
+     flex-direction: column-reverse;
+     align-items: center;
+     object-fit: contain;
+     aspect-ratio: auto;
+    
+}
+
+.idBoxWrap {
+    position: absolute;
+    padding: 30px;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    display: block;
+    width: 30rem;
+    height: 30rem;
+    background-color: white;
+    box-shadow: 4px 3px 5px 3px rgba(128, 128, 128, 0.39);
+    border-radius: 4px;
+}
+
+.innerContainer{
+    margin-top: 3rem;
+    width: 100%;
+    height: 100%;
+    border: none;
+ 
+}
+.inputinfoWrap  {
+    display: inline-block;
+    width: 100%;
+    height: 29px;
+    border: none;
+    margin: 3%;
+}
+
+.inputName {
+    width: 93%;
+    height: 29px;
+}
+
+.inputPhoneNumber{
+    width: 93%;
+    height: 29px;
+}
+
+.inputName::placeholder{
+    color: #c4c1c1;
+}
+
+.inputPhoneNumber::placeholder{
+    color:#c4c1c1;
+}
+.confirmBtn {
+    margin-top: 30px;
+    width: 95%;
+    height: 35px;
+    background-color: black;
+    cursor: pointer;
+    color: #fff;
+}
+
+.Texts {
+    cursor:default;
+}
+
+
+.textWrapBox{
+   
+    display: inline-flex;
+}
+
+.errorMSG {
+    margin: 20px 0 9px;
+    cursor: default;
+    display: inline;
+    color: red;
+    font-size: 10px;
+    margin-left: 10px;
+    height: 10px;
+}
