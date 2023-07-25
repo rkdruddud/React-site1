@@ -10,8 +10,14 @@ import SignUp from './menuScreens/SignUp';
 import Registration from './loginEtcMenu/Registration';
 import FindID from './loginEtcMenu/FindID';
 import FindPW from './loginEtcMenu/FindPW';
-import LoginMain from './menuScreens/LoginMain';
 import ChangePW from './loginEtcMenu/ChangePW';
+
+
+import LoginHome from './LoginMenuScreen/LoginHome';
+import MyStory from './LoginMenuScreen/MyStory';
+import ShareStroy from './LoginMenuScreen/ShareStroy';
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,13 +30,17 @@ root.render(
      <Route path='/Guide' element={<Guide/>} />
       </Route> 
       
+    
+      <Route path='/LoginHome' element={<LoginHome/>} />
+      <Route path='/MyStroy' element={<MyStory/>} />
+     <Route path='/ShareStroy' element={<ShareStroy/>} />   
       <Route path='/ChangePW' element={<ChangePW/>} />
-      <Route path='/LoginMain' element={<LoginMain/>} />
      <Route path='/SignUp' element={<SignUp/>} />
      <Route path='/Registration' element={<Registration/>} />
      <Route path='/FindID' element={<FindID/>} />
      <Route path='/FindPW' element={<FindPW/>} />
     </Routes>
+
     </BrowserRouter>
   </React.StrictMode>
 );

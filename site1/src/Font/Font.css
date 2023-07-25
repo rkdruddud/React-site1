@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "Comfortaa";
+    font-display: fallback;
+    src: url("./Comfortaa-Regular.eot?iefix") format("embedded-opentype");
+
+    font-style: normal;
+}

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./SignUp.css";
-import LoginMain from "./LoginMain";
+import LoginMain from "../LoginMenuScreen/LoginHome";
 import FindID from "../loginEtcMenu/FindID";
 import FindPW from "../loginEtcMenu/FindPW";
 import Registration from "../loginEtcMenu/Registration";
@@ -89,7 +89,7 @@ const SignUp = () => {
                         });
                        
                         alert("로그인 성공");
-                        navigate("/LoginMain",{
+                        navigate("/LoginHome",{
                             state: {
                                 userID : `${id}`
                             }

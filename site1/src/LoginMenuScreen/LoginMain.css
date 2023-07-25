@@ -1,5 +1,7 @@
-.navbar {
-    background: linear-gradient(90deg, #4f33ec 0%, #5f57d6 100%);
+
+
+.navbar2 {
+    background: linear-gradient(90deg, #020202 0%, #000000 100%);
     height: 80px;
     display: flex;
     justify-content: center;
@@ -10,7 +12,7 @@
     z-index: 999;
   }
   
-  .navbar-container {
+  .navbar-container2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +20,7 @@
     max-width: 1500px;
   }
   
-  .navbar-logo {
+  .navbar-logo2{
     color: #fff;
     justify-self: start;
     margin-left: 100px;
@@ -29,7 +31,7 @@
     align-items: center;
     text-align: end;
   }
-  .navbar-logo-icon {
+  .navbar-logo-icon2 {
     color: #fff;
     justify-self: start;
     margin-right: 10px;
@@ -40,7 +42,7 @@
     
   }
   
-  .nav-menu {
+  .nav-menu2 {
     
     display: grid;
     grid-template-columns: repeat(4, auto);
@@ -52,11 +54,11 @@
     margin-right: 2rem;
   }
   
-  .nav-item {
+  .nav-item2 {
     height: 90px;
   }
   
-  .nav-links {
+  .nav-links2 {
     color: #fff;
     display: flex;
     align-items: center;
@@ -67,25 +69,24 @@
   }
   
  
-  .fa-bars {
+  .fa-bars2 {
     color: #fff;
   }
   
-  .menu-icon {
+  .menu-icon2 {
     display: none;
   }
-  .nav-links:hover {
+  .nav-links2:hover {
     border-bottom: 4px solid #fff;
     transition: all 0.2s ease-out;
     background-color: #fff;
-    color: #3224f5;
+    color: #000000;
     height: 36px;
     margin-top: 30px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-radius: 100px;
   }
   
-  .nav-links-mobile {
+  .nav-links-mobile2 {
     display: block;
     text-align: center;
     margin: 20px auto;
@@ -99,7 +100,7 @@
     border: 1px solid #fff;
     transition: all 0.3s ease-out;
   }
-  .nav-links-mobile:hover {
+  .nav-links-mobile2:hover {
     display: block;
     text-align: center;
     margin: 20px auto;
@@ -108,13 +109,13 @@
     text-decoration: none;
     font-size: 1.0rem;
     background-color: #fff;
-    color: #3224f5;
+    color: #000000;
     padding: 14px 20px;
     border: 1px solid #fff;
     transition: all 0.3s ease-out;
   }
 
-  .navbar-logo {
+  .navbar-logo2 {
     position: absolute;
     color: #fff;
     top: 0;
@@ -122,7 +123,7 @@
     transform: translate(25%, 80%);
   }
 
-  .text{
+  .text2{
     display: block;
     width: 50rem;
     height: 20rem;
@@ -130,11 +131,11 @@
 
   }
   @media screen and (max-width: 950px) {
-    .NavbarItems {
+    .NavbarItems2 {
       position: relative;
     }
   
-    .nav-menu {
+    .nav-menu2 {
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -146,24 +147,24 @@
       transition: all 0.5s ease;
       justify-content: center;
     }
-    .menu-close{
+    .menu-close2{
         color: #fff;
      
     }
-    .menu-open {
+    .menu-open2 {
         color: #fff;
     }
   
-    .nav-menu.active {
-      background: #3224f5;
+    .nav-menu.active2 {
+      background: #000000;
       left: 0;
       opacity: 1;
       transition: all 0.5s ease;
-      z-index: 1;
+      z-index: 2;
     }
   
  
-    .navbar-logo {
+    .navbar-logo2 {
       position: absolute;
       size: 20px;
       color: #fff;
@@ -172,7 +173,7 @@
       transform: translate(25%, 80%);
     }
   
-    .menu-icon {
+    .menu-icon2 {
       display: block;
       position: absolute;
       top: 0;
@@ -182,12 +183,12 @@
       cursor: pointer;
     }
   
-    .fa-times {
+    .fa-times2 {
       color: #fff;
       font-size: 2rem;
     }
 
-    .nav-links {
+    .nav-links2 {
         text-align: center;
         margin-top: 25px;
         width: 100%;
@@ -197,13 +198,13 @@
      
       }
     
-      .nav-links:hover {
+      .nav-links2:hover {
         background-color: #fff;
-        color: #3224f5;
+        color: #000000;
         border-radius: 0;
       }
     
-    .nav-links-mobile {
+    .nav-links-mobile2 {
       display: block;
         position: relative;
       
@@ -220,9 +221,10 @@
       transition: all 0.3s ease-out;
     }
   
-    .nav-links-mobile:hover {
+    .nav-links-mobile2:hover {
       background: #fff;
-      color: #3224f5;
+      color: #000000;
       transition: 250ms;
     }
   }
+
