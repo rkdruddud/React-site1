@@ -14,17 +14,22 @@ const FindPW = () =>{
     const [secret, setSecret] = useState('');
     const [checkNumber, setCheckNumber] = useState('');
 
+    const [checkNumValid, setCeckNumValid] = useState(false);
+
+   
+
     const navigate = useNavigate();
 
-    const idHandle = (e) =>{
+    const idHandle = (e) =>{        //id 값 지정 및 유효성 검사
         setId(e.target.value);
     }
 
-    const emailHandle = (e) =>{
+    const emailHandle = (e) =>{     //email 값 지정 및 유효성 검사
         setEmail(e.target.value);
+        
     }
 
-    const checkNumberHandle = (e) =>{           
+    const checkNumberHandle = (e) =>{        //인증번호 지정           
         setCheckNumber(e.target.value);
     }
 
@@ -33,11 +38,11 @@ const FindPW = () =>{
    }
 
    const sendEmail = async(email)=>{   // 메일로 인증번호를 보내는 함수
-       const respons = axios.post('http://localhost:8080/FindPW',{
+       const respons2 = axios.post('http://localhost:8080/FindPW',{
             email : email
         });
         try{
-             setSecret(respons.data[0].secretkey);
+             setSecret((await respons2).data);
         }catch(e){
             console.log(e);
         }
@@ -54,14 +59,21 @@ const FindPW = () =>{
     
     try{
        
-        if(email === respons.data[0].email){
+         if(id.length===0||id.length<3){
+            
+        alert("아이디를 제대로 입력해주세요.");
+
+       }else if(email.length === 0){
+            alert("인증번호를 받는 이메일을 입력해주세요.");
+       }
+        else if(email === respons.data[0].email){
            
             sendEmail(email);
             textHandle();
             setVisible(true);
             alert("메일로 인증번호가 전송되었습니다.");
         }else {
-            alert("회원 정보와 입력된 정보가 다릅니다."+<br></br>+"이메일을 다시 입력해주세요.");
+            alert("회원 정보와 입력된 정보가 다릅니다.\n"+"이메일을 다시 입력해주세요.");
             setVisible(false);
             setText("인증번호 전송");
         }
@@ -74,17 +86,33 @@ const FindPW = () =>{
     
    }
 
-   const disvisibleHandle = () =>{
-    setVisible(false);
-    if(checkNumber === secret){
-        navigate("/ChangePW");
+   const confirmationNumber = () =>{        //인증번호 확인
+    
+    if(checkNumber == secret){
+        setCeckNumValid(true);
+        alert("인증번호가 확인되었습니다.");
     }else {
         alert("인증번호가 일치하지 않습니다.");
+        setCeckNumValid(false);
     }
-    
-
-    
    }
+
+   const changePWbtnHandle = () =>{     //확인 버튼 클릭
+    setVisible(false);
+
+    if(checkNumValid){
+        navigate("/ChangePW",{
+            state: {
+                userID : `${id}`
+            }
+        });
+    }
+    else{
+        alert("이메일 인증을 해주세요.");
+    }
+   }
+
+ 
    
    
     return (
@@ -114,13 +142,13 @@ const FindPW = () =>{
                 <div className="checkNumberBox">
                     
                     <input type="text" className="inputCheckNumber" value={checkNumber} onChange={checkNumberHandle} placeholder="인증번호를 입력해주세요."></input>
-                    <button className="checkNumberbtn" >인증확인</button>
+                    <button className="checkNumberbtn" onClick={confirmationNumber}>인증확인</button>
                </div>
                 </div>
                 }
                 
                 <div className="inputinfoWrap">
-                    <input type="Button" className="confirmBtn" value="확인"  onClick={disvisibleHandle}></input>
+                    <input type="Button" className="confirmBtn" value="확인"  onClick={changePWbtnHandle}></input>
                 </div>
 
                 </div>

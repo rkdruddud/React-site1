@@ -69,8 +69,8 @@ const userIDInfo = {...location.state};
             </div>
             
         <div className="uploadBox"> 업로드 </div>
-        <div className="downicon" onClick={scrollMovedown} style={{opacity:(190-position)/50}}>
-            ↓
+        <div className="downicon"  onClick={scrollMovedown} style={{opacity:(190-position)/50}}>
+            ↓ 
             </div>
         </div>
 
@@ -78,12 +78,12 @@ const userIDInfo = {...location.state};
         <div className="upicon" onClick={scrollMoveUp} style={{opacity:(position-900)/50}}>
         ↑
             </div>
-            <div className="shadowblock">
+            <div className="shadowblock"></div>
+            <div className="galleryWrap">
+            <div className="galleryScrollWrap">
+                
 
             </div>
-           
-            <div className="galleryWrap">
-
             </div>
 
 

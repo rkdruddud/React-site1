@@ -9,7 +9,7 @@ import "../LoginMenuScreen/LoginMain.css";
 import axios from "axios";
 
 import MyStory from '../LoginMenuScreen/MyStory';
-import ShareStory from '../LoginMenuScreen/ShareStroy';
+import CreateStory from '../LoginMenuScreen/CreateStroy';
 import LoginHome from '../LoginMenuScreen/LoginHome';
 
 const LoginMain = () => {
@@ -62,9 +62,9 @@ const loadMyStroy = ()=>{
     });
 }
 
-const loadShareStroy = ()=>{
+const loadCreateStory = ()=>{
     closeMobileMenu();
-    navigte('/ShareStroy',{
+    navigte('/CreateStory',{
         state: {
             userID : `${userID}`
         }
@@ -98,8 +98,8 @@ const loadShareStroy = ()=>{
                   </div>
               </li>
               <li className="nav-item2">
-                  <div className="nav-links2" onClick={loadShareStroy}>
-                     Share Story
+                  <div className="nav-links2" onClick={loadCreateStory}>
+                  CreateStory
                   </div>
               </li>
           

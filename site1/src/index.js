@@ -15,7 +15,7 @@ import ChangePW from './loginEtcMenu/ChangePW';
 
 import LoginHome from './LoginMenuScreen/LoginHome';
 import MyStory from './LoginMenuScreen/MyStory';
-import ShareStroy from './LoginMenuScreen/ShareStroy';
+import CreateStory from './LoginMenuScreen/CreateStroy';
 
 
 
@@ -33,7 +33,7 @@ root.render(
     
       <Route path='/LoginHome' element={<LoginHome/>} />
       <Route path='/MyStroy' element={<MyStory/>} />
-     <Route path='/ShareStroy' element={<ShareStroy/>} />   
+     <Route path='/CreateStory' element={<CreateStory/>} />   
       <Route path='/ChangePW' element={<ChangePW/>} />
      <Route path='/SignUp' element={<SignUp/>} />
      <Route path='/Registration' element={<Registration/>} />

@@ -19,11 +19,11 @@ const bcrypt = require('bcrypt');
 // 메일을 보내기 위한 모듈 3가지
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
-const mgTransport = require('nodemailer-mailgun-transport');
+
 
 
 // 본인의 소스코드에서 apikey, domain이 적혀있는 env 파일을 지정.
-dotenv.config({path: path.resolve(__dirname, ".env")});
+dotenv.config({path: path.resolve(__dirname, "../../.env")});
 
 app.use(express.static(path.join(__dirname, '../../build')));
 app.use(bodyParser.urlencoded({extended:false}));
@@ -143,7 +143,7 @@ app.post('/LogOut', (req, res)=>{        // 로그인 성공시 DB의 login 값 
     });
 });
 
-app.get('/Findid', (req, res)=>{
+app.get('/Findid', (req, res)=>{        // 아이디 찾기
     const userName = req.query.name;
     const userPhonNumber = req.query.phonNumber;
     
@@ -158,7 +158,7 @@ app.get('/Findid', (req, res)=>{
     });
 });
 
-app.get('/FindPW', (req, res)=>{
+app.get('/FindPW', (req, res)=>{            // 비밀번호 변경을 위한 아이디의 메일을 확인
     const params = req.query.id;
     
     db.query('SELECT email FROM `userinfo` WHERE `id` = ?', params, (error, data) =>{
@@ -172,74 +172,53 @@ app.get('/FindPW', (req, res)=>{
     });
 });
 
-
-
-app.post('/FindPW', async (req,res) => {
+app.post('/FindPW', async (req,res) => {   // 인증 메일 전송
     const toAdress = req.body.email;
     const secretkey = ((Math.round(Math.random() * 1000000)) + '').padStart(6, '0');
-    
-    console.log(toAdress);
-
-    const email = {
-        from: "rkdruddud1@naver.com",
-        to : toAdress,
-        subject : "MyStroy Change password Secret Key",
-        html : `<b>Your Change password Secret key ${secretkey}</b>`,
-    };
-
-    const auth = {
-        auth:{
-            api_key: process.env.MAILGUN_APIKEY,
-            domain: process.env.MAILGUN_DOMIN,
-        },
-    };
-
-    const nodemailerMailgun = nodemailer.createTransport(mgTransport(auth));
-
-    nodemailerMailgun.sendMail(email, (error, info) =>{
-        console.log(email);
-        if(!error){
-            console.log(secretkey);
-            console.log(`${info}`);
-            res.send(secretkey);
-        }else{
-            console.log(error);
-            console.log(`${error}`);
-        }
-    })
-});
-/*
-app.post('/FindPW', async (req,res) => {
-    const toAdress = req.body.email;
-    const secretkey = ((Math.round(Math.random() * 1000000)) + '').padStart(6, '0');
-    
-    console.log(toAdress);
-
+   
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        host:'smtp.gmail.com',
-        port: 587,
-        secure: false,
+        service: 'naver',
+        host: 'smtp.naver.com',
+        port:465,
+        secure:false,
         auth:{
-            user: process.env.MAILGUN_ID,
-            pass: process.env.MAILGUN_PASSWORD,
+            user: process.env.GMAIL_ID,
+            pass: process.env.GMAIL_PASSWORD
         },
     });
-
+    console.log(toAdress);
     try{
         const info = await transporter.sendMail({
             from: `"REACT_EXPRESS" <${process.env.GMAIL_ID}>`,
-            to : toAdress,
-            subject : "MyStroy Change password Secret Key",
-            html : `<b>Your Change password Secret key ${secretkey}</b>`,
+            to: toAdress,
+            subject: '인증번호 입니다.',
+            text: `인증번호는 : ${secretkey} 입니다.`
         });
         console.log(secretkey);
-        res.send(secretkey);
+        res.sendStatus(secretkey);
     }
     catch(e){
         console.log(e);
-        
     }
-
+   
+   
 });
-*/
+
+app.post('/ChangePW', (req, res)=>{        // 로그인 성공시 DB의 login 값 변경
+    
+    const userPW = req.body.changePW;
+    const userID = req.body.id;
+   
+    db.query('UPDATE `userinfo` SET `password`= ? WHERE `id` = ?;',[userPW, userID] ,  (error, data) =>{
+
+        if(!error){
+            console.log(userPW);
+            console.log("비밀번호 변경");
+          
+        }else{
+            console.log(error);
+            res.send(error);
+        }
+
+    });
+});

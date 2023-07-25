@@ -1,9 +1,9 @@
 import React,{useEffect,useState} from "react";
-import "../LoginMenuScreen/ShareStory.css";
+import "../LoginMenuScreen/CreateStory.css";
 import {Routes, Route, Link, useNavigate, useLocation} from "react-router-dom";
 import LoginMain from "./LoginMain";
 
-const ShareStory = ()=>{
+const CreateStory = ()=>{
    
     const [userID, setUserID] = useState('');
 
@@ -23,4 +23,4 @@ const userIDInfo = {...location.state};
     )
 }
 
-export default ShareStory;
+export default CreateStory;

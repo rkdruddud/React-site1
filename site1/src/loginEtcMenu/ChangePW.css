@@ -70,3 +70,21 @@
 .Texts {
     cursor:default;
 }
+
+.textWrapBox{
+    display: inline-flex;
+}
+
+.inputTextNewPW{
+    cursor: default;
+}
+
+.errorMSG{
+    margin: 20px 0 9px;
+    cursor: default;
+    display: inline;
+    color: red;
+    font-size: 10px;
+    margin-left: 10px;
+    height: 10px;
+}

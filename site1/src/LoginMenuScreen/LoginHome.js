@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from "react";
 import "../LoginMenuScreen/LoginHome.css";
+
 import {Routes, Route, Link, useNavigate, useLocation} from "react-router-dom";
 import LoginMain from "./LoginMain";
 import backgroundIMG from "../images/eximg.jpg";
@@ -18,13 +19,13 @@ import ImageSample11 from "../images/image12.jpg";
 const LoginHome = ()=>{
     
     const [userID, setUserID] = useState('');
+    const [locationKeys, setLocationKeys] = useState([]);
 
-    const location = useLocation();
+    const location2 = useLocation();
 
-    const userIDInfo = {...location.state};
+    const userIDInfo = {...location2.state};
 
-    const num= [1,2,3,4,5,6];
-// <img className="homeimg"  src={backgroundIMG}></img>
+
     useEffect(()=>{
         setUserID(userIDInfo.userID);
         
