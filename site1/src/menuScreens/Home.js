@@ -7,7 +7,9 @@ import Image2 from "../images/image2.jpg";
 import Image3 from "../images/image3.jpg";
 import Image4 from "../images/image4.jpg";
 import Image5 from "../images/image5.jpg";
-import backgroundIMG from "../images/eximg123.jpg";
+import backgroundIMG from "../images/backimg1.jpg";
+import vector from "../images/vector1.png";
+import ground from "../images/ground.jpg";
 const Home = () => {
   
   const [position, setPosition] = useState(0);
@@ -31,40 +33,49 @@ const Home = () => {
 <div className="fullContainer">
   
 <div className="HomeImageContainer" >
-<div className="TextAreaWrap">
+<div className="TextAreaWrap" style={{
+   opacity:(125-position),
+   transition:"3s"
+}}>
 <h1 style={{marginLeft:"120px"}}> MyStroy에 오신것을 환영합니다.
                 </h1>
                 <h2 style={{marginLeft:"250px"}}>나만의 여행 기록을 남겨봐요.</h2>
 </div>
 
-<img className="homeimg"  src={backgroundIMG} style={{
-    backgroundPositionY: -position/2,
+
+<div className="backgoundIMGContainer" style={{
+  transform: `translateY(${(position-480)*1.2}px)`,
+  opacity:(464-position),
+  height:`{position/0.1}rem`,
+  transition:"2s"
+}}>
+<img className="homeimg"  src={backgroundIMG} ></img>
+
+</div>
+<img className="vector" src={vector} style={{
+  transform: `translateY(${-position*1.2}px)`,
+  transition:"3s"
   }}></img>
-</div>
 
-<div className="box1">
-
-  <div className="blind" ></div>
-
-
-  <div className="plancard" style={{
-    transform:`translateY(${-position*2.4}px)`,
-    opacity: (position-190)/50,
-  }}> <div className="EXtext">@keyframes를 이용하여 애니메이션 중간중간의 특정 지점들을 거칠 수 있는</div></div>
 
 </div>
+<div className="blind" style={{
+  transform: `translateY(${-position*1.2}px)`,
+  transition:"3s"
+  }}>
 
-<div className="box2" >
 
-<div className="img3" style={{
-    transform:`translateX(${-position}px)`,
+
+    <img src={ground} className="groundImg"></img>
     
-  }} >
+    
+
+</div>
+<div className="box1" >
 
 </div>
 
-</div>
-
+<div className="imageCardfullContainer">
 <div className="imageContainer" >
   <div className="imageCard" >
   <img className="sampleimg1" src={Image1} ></img>
@@ -87,6 +98,8 @@ const Home = () => {
   <img className="sampleimg4" src={Image5}></img>
   </div>
   
+</div>
+
 </div>
 
 </div>

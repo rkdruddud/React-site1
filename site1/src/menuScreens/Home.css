@@ -1,15 +1,36 @@
 .fullContainer{
     display: block;
+
 }
 
 .HomeImageContainer{
    display: block;
-   background-color: black;
+   position: absolute;
+   background-color: rgb(12, 7, 0);
     width: 100%;
-    height: auto;
-    display: block;
-    z-index: 10;
-   
+    height: 100%;
+    z-index: 3;
+    
+}
+
+.backgoundIMGContainer{
+width: 100%;
+height: auto;
+display: block;
+padding: 0;
+margin: 0;
+position:absolute;
+transform: translateY(-32rem);
+z-index: 4;
+}
+
+.vector{
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    transform: translateY(-7.3rem);
+    z-index: 22;
+  
 }
 
 .title_homeimg {
@@ -34,7 +55,7 @@
     transform: translate(-50%);
     cursor: default;
     font-size: 25px;
-    
+    z-index: 20;
     color: #fff;
     align-items: center;
     
@@ -62,73 +83,52 @@ overflow: hidden;
     
 }
 
-
-.box1{
-   
-    background-color: rgb(32, 17, 253);
-}
-
-.box2{
-    
-    width: 100%;
-    height: auto;
-    background-color: rgb(0, 0, 0);
-    z-index: 10;
-}
-
 .blind{
-    display: block;
-    position: absolute;
-  
+    position:absolute;
+    display: flexbox;
+    top:100%;
     width: 100%;
-    height: 10rem;
-    background-color: rgb(0, 0, 0);
-    z-index: 20;
-    background-repeat: no-repeat;
+    height: 130%;
+    background:  vertical-gradient(180deg, #4f33ec 100%, #000000 0%);
+    z-index: 66;
+    object-position: center;
+    perspective-origin: center;
+
 }
 
 
-
-.plancard{
-    display: block;
-    position: absolute;
-    margin-top: 30px;
+.groundImg{
+    position:absolute;
     width: 100%;
-    height: 30rem;
-    background-color: rgba(0, 0, 0, 0.61);
-    z-index: 20;
-    align-items: center;
-    background-repeat: no-repeat;
-}
-
-.img3{
+    height: 100%;
    
-    height: 50rem;
-    width: auto;
-    background: linear-gradient(90deg, #4f33ec 0%, #5f57d6 100%);
-    z-index: 1;
+   
 }
 
-.EXtext{
+
+.box1 {
     display: block;
-    position: absolute;
-    margin: 30px;
-    width: 50%;
-    height: 20%;
-    font-size: xx-large;
-    color: #ffffff8f;
-  
-    z-index: 20;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%, 50%);
-  
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    position:absolute;
+    top: 100%;
+    z-index: -1;
+}
+
+
+
+
+.imageCardfullContainer{
+    display: block;
+    width: 100%;
+    height: 100%;
+    
 }
 
 .imageContainer{
     display:inline-block;
     background-color: #fff;
-  
     padding: 1rem;
     width: auto;
     height: auto;
