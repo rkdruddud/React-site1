@@ -82,9 +82,6 @@ const Home = () => {
   <div className="imageCard">
   <img className="sampleimg4" src={Image5}></img>
   </div>
-  <div className="imageCard">
-  <img className="sampleimg4" src={Image5}></img>
-  </div>
   
 </div>
 
