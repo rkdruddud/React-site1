@@ -7,7 +7,7 @@ import Image2 from "../images/image2.jpg";
 import Image3 from "../images/image3.jpg";
 import Image4 from "../images/image4.jpg";
 import Image5 from "../images/image5.jpg";
-import backgroundIMG from "../images/eximg.jpg";
+import backgroundIMG from "../images/eximg123.jpg";
 const Home = () => {
   
   const [position, setPosition] = useState(0);
@@ -31,8 +31,12 @@ const Home = () => {
 <div className="fullContainer">
   
 <div className="HomeImageContainer" >
-<div className="title_homeimg">My Stroy</div>
-<div className="innerText_homeimg">나만의 여행 기록을 남겨봐요.</div>
+<div className="TextAreaWrap">
+<h1 style={{marginLeft:"120px"}}> MyStroy에 오신것을 환영합니다.
+                </h1>
+                <h2 style={{marginLeft:"250px"}}>나만의 여행 기록을 남겨봐요.</h2>
+</div>
+
 <img className="homeimg"  src={backgroundIMG} style={{
     backgroundPositionY: -position/2,
   }}></img>

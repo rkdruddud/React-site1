@@ -25,6 +25,23 @@
     overflow: hidden;
 }
 
+.TextAreaWrap{
+    position: absolute;
+    width: 60rem;
+    height: 10rem;
+    top:7rem;
+    left: 50%;
+    transform: translate(-50%);
+    cursor: default;
+    font-size: 25px;
+    
+    color: #fff;
+    align-items: center;
+    
+    
+}
+
+
 .innerText_homeimg{   
     position: absolute;
   

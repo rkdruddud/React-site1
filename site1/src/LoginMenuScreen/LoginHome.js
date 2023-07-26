@@ -3,7 +3,6 @@ import "../LoginMenuScreen/LoginHome.css";
 
 import {Routes, Route, Link, useNavigate, useLocation} from "react-router-dom";
 import LoginMain from "./LoginMain";
-import backgroundIMG from "../images/eximg.jpg";
 import ImageSample1 from "../images/eximg1.jpg";
 import ImageSample2 from "../images/image1.jpg";
 import ImageSample3 from "../images/image2.jpg";
