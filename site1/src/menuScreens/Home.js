@@ -14,14 +14,20 @@ const Home = () => {
   
   const [position, setPosition] = useState(0);
 
+  const [windowWith, setWindowWith] = useState(0);
+
   const onScroll = () => {
     console.log(window.scrollY);
-    setPosition(window.scrollY);  
+    setPosition(window.scrollY); 
+   
   }
 
-  useEffect(()=>{
+ 
 
+  useEffect(()=>{
+    
     window.addEventListener("scroll", onScroll);
+    setWindowWith(window.innerWidth);
 
     return ()=>{
       window.removeEventListener("scroll",onScroll);
@@ -44,7 +50,7 @@ const Home = () => {
 
 
 <div className="backgoundIMGContainer" style={{
-  transform: `translateY(${(position-480)*1.2}px)`,
+  transform: `translateY(${(position-(windowWith/4.9))*1.2}px)`,
   opacity:(464-position),
   height:`{position/0.1}rem`,
   transition:"2s"
@@ -59,15 +65,37 @@ const Home = () => {
 
 
 </div>
+
 <div className="blind" style={{
   transform: `translateY(${-position*1.2}px)`,
   transition:"3s"
   }}>
-
-
-
     <img src={ground} className="groundImg"></img>
     
+    <div className="blindInnerwrap">
+    <div className="lightBox"></div>
+
+<div className="slider2">
+
+  <div className="slider-track2">
+    
+    <div className="slide2"><img src={Image1} className="homeSlideImg2"></img></div>
+    <div className="slide2"><img src={Image2} className="homeSlideImg2"></img></div>
+    <div className="slide2"><img src={Image3} className="homeSlideImg2"></img></div>
+    <div className="slide2"><img src={Image4} className="homeSlideImg2"></img></div>
+    <div className="slide2"><img src={Image5} className="homeSlideImg2"></img></div>
+
+    <div className="slide2"><img src={Image1} className="homeSlideImg2"></img></div>
+    <div className="slide2"><img src={Image2} className="homeSlideImg2"></img></div>
+    <div className="slide2"><img src={Image3} className="homeSlideImg2"></img></div>
+    <div className="slide2"><img src={Image4} className="homeSlideImg2"></img></div>
+    <div className="slide2"><img src={Image5} className="homeSlideImg2"></img></div>
+  </div> 
+
+
+</div>
+
+    </div>
     
 
 </div>

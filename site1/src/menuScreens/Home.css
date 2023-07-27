@@ -1,5 +1,5 @@
 .fullContainer{
-    display: block;
+    position: relative;
 
 }
 
@@ -85,15 +85,14 @@ overflow: hidden;
 
 .blind{
     position:absolute;
-    display: flexbox;
+    display: flex;
     top:100%;
     width: 100%;
     height: 130%;
-    background:  vertical-gradient(180deg, #4f33ec 100%, #000000 0%);
-    z-index: 66;
+    z-index: 4;
     object-position: center;
-    perspective-origin: center;
-
+    
+   
 }
 
 
@@ -101,9 +100,123 @@ overflow: hidden;
     position:absolute;
     width: 100%;
     height: 100%;
-   
+    object-position: center;
    
 }
+
+.blindInnerwrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    perspective: 1000px;
+}
+
+.lightBox{
+    position: absolute;
+    width: 100%;
+    height: 0;
+    left: 50%;
+    bottom: 65%;
+    transform: translate(-50%, 50%);
+    border-radius: 4px;
+    
+    background-color:rgba(255, 255, 255, 0);
+    box-shadow: 0px 200px 900rem 200px rgba(252, 233, 172, 0.473);
+    z-index: 3;
+}
+
+.slider2 {
+    position: relative;
+    width: 90%;
+    left: 15%;
+    height: 17rem;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    background-color: black;
+    z-index: 6;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: 2px 50px 200px 5px rgb(3, 3, 3);
+    transform: rotateY(35deg);
+}
+
+
+.slider-track2{
+    display: flex;
+    width: calc(250px*18);
+    animation: scroll 20s linear infinite;
+    z-index: 30;
+    
+}
+
+.slider-track2:hover{
+    animation-play-state: paused;
+   
+}
+
+.slide2{
+    
+    width: 250px;
+    height: 200px;
+    align-items: center;
+    padding: 15px;
+    perspective: 200px;
+    
+}
+
+
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-200px*7));
+    }
+}
+
+
+
+.homeSlideImg2{
+    
+    width: 100%;
+    height: 100%;
+    transition: transform 1%;
+    z-index: 31;
+}
+
+.homeSlideImg2:hover {
+    transform: translateZ(20px);
+    transition: 0.5s;
+
+}
+
+
+.slider-track2::before,
+.slider-track2::after {
+    background-color: linear-gradient(to right, #fffdfd 0%, rgb(196, 195, 199) 100% );
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    
+}
+
+.slider-track2::before {
+    left: 0;
+    top:0;
+}
+
+.slider-track2::after{
+    right: 0;
+    top:0;
+    transform: translateZ(180deg);
+}
+
+
 
 
 .box1 {
