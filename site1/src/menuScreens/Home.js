@@ -10,6 +10,7 @@ import Image5 from "../images/image5.jpg";
 import backgroundIMG from "../images/backimg1.jpg";
 import vector from "../images/vector1.png";
 import ground from "../images/ground.jpg";
+import camera from "../images/camera.jpg";
 const Home = () => {
   
   const [position, setPosition] = useState(0);
@@ -71,8 +72,20 @@ const Home = () => {
   transition:"3s"
   }}>
     <img src={ground} className="groundImg"></img>
+    <div className="sticker"></div>
+    <img src={camera} className="camera"></img>
+    <div className="sticker2"></div>
+
+    <div className="explainText">
+      <h2>MyStroy 사용방법</h2>
+      1. 회원가입<br/>
+      2. 로그인<br/>
+      3. MyStroy페이지에서 업로드 클릭 <br/>
+      4. 제목과 사진들 업로드<br/>
+      5. MyStory 페이지에서 확인
+    </div>
     
-    <div className="blindInnerwrap">
+   
     <div className="lightBox"></div>
 
 <div className="slider2">
@@ -95,7 +108,7 @@ const Home = () => {
 
 </div>
 
-    </div>
+
     
 
 </div>

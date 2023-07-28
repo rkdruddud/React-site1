@@ -194,8 +194,9 @@ app.post('/FindPW', async (req,res) => {   // 인증 메일 전송
             subject: '인증번호 입니다.',
             text: `인증번호는 : ${secretkey} 입니다.`
         });
-        console.log(secretkey);
+        
         res.sendStatus(secretkey);
+        console.log(secretkey);
     }
     catch(e){
         console.log(e);
