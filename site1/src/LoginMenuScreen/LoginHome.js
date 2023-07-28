@@ -32,7 +32,7 @@ const LoginHome = ()=>{
     
     return (
         <>
-        <LoginMain></LoginMain>
+        <LoginMain value={userID}></LoginMain>
         <div className="fullContents">
             <div className="innerContents">
            

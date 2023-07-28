@@ -18,6 +18,8 @@ const MyStory = ()=>{
    
     const location = useLocation();
 
+    const navigate = useNavigate();
+
 const userIDInfo = {...location.state};
     useEffect(()=>{
         setUserID(userIDInfo.userID);
@@ -68,7 +70,14 @@ const userIDInfo = {...location.state};
 
             </div>
             
-        <div className="uploadBox"> 업로드 </div>
+        <div className="uploadBox"  onClick={()=>{
+            navigate("/Upload",{
+                state: {
+                    userID : `${userID}`
+                }
+            });
+        }}> 업로드 </div>
+
         <div className="downicon"  onClick={scrollMovedown} style={{opacity:(190-position)/50}}>
             ↓ 
             </div>

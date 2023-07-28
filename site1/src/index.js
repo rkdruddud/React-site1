@@ -17,7 +17,7 @@ import LoginHome from './LoginMenuScreen/LoginHome';
 import MyStory from './LoginMenuScreen/MyStory';
 import CreateStory from './LoginMenuScreen/CreateStroy';
 
-
+import Upload from './LoginMenuScreen/Upload';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -30,7 +30,7 @@ root.render(
      <Route path='/Guide' element={<Guide/>} />
       </Route> 
       
-    
+      <Route path='/Upload' element={<Upload/>} />
       <Route path='/LoginHome' element={<LoginHome/>} />
       <Route path='/MyStroy' element={<MyStory/>} />
      <Route path='/CreateStory' element={<CreateStory/>} />   

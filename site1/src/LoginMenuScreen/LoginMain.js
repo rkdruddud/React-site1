@@ -12,7 +12,7 @@ import MyStory from '../LoginMenuScreen/MyStory';
 import CreateStory from '../LoginMenuScreen/CreateStroy';
 import LoginHome from '../LoginMenuScreen/LoginHome';
 
-const LoginMain = () => {
+const LoginMain = (props) => {
   
     const [clickIcon, setClickicon] = useState(false);  
     const [click , setClick] = useState(false);
@@ -27,8 +27,10 @@ const userIDInfo = {...location.state};
 const navigte = useNavigate();
 
 useEffect(()=>{
-    setUserID(userIDInfo.userID);
-},[]);
+    setUserID(props.value);
+},[props]);
+
+
 
 const handleClick = () => {
     setClick(!click);
@@ -55,7 +57,7 @@ const logoutHandle = () =>{
 
 const loadMyStroy = ()=>{
     closeMobileMenu();
-    navigte('/MyStroy',{
+    navigate('/MyStroy',{
         state: {
             userID : `${userID}`
         }
@@ -64,7 +66,7 @@ const loadMyStroy = ()=>{
 
 const loadCreateStory = ()=>{
     closeMobileMenu();
-    navigte('/CreateStory',{
+    navigate('/CreateStory',{
         state: {
             userID : `${userID}`
         }
@@ -88,7 +90,7 @@ const loadCreateStory = ()=>{
           </div>
           <ul className={click ? "nav-menu active2" : "nav-menu2"}>
               <li className="nav-item2">
-                  <Link to="/LoginHome" className="nav-links2" onClick={closeMobileMenu}>
+                  <Link to="/LoginHome" state={ {id:userID} } className="nav-links2" onClick={closeMobileMenu}>
                      Home
                   </Link>
               </li>
