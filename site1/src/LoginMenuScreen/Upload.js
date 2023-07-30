@@ -13,6 +13,21 @@ const Upload = () =>{
 
     const userIDInfo = {...location.state};
 
+    const [uploadFile, setUploadFile] = useState([]);
+
+    const [fileName, setFileName] = useState([]);
+
+    const uploadLableHandle = (e) =>{
+        const uploadFileList = e.target.files;
+
+        for(let i =0; i<uploadFileList.length; i++){
+            setUploadFile(uploadFileList[i]);
+            console.log(uploadFileList[i]);
+        }
+
+    }
+
+
     useEffect(()=>{
         setId(userIDInfo.userID);
     },[]);
@@ -38,10 +53,13 @@ const Upload = () =>{
                 </div>
                 </div>
                 
-                <input type="file" className="fileUploadArea">
+                <div className="fileUploadArea">
+                <input type="file" id="file" multiple={true}  onChange={uploadLableHandle}style={{display:"none"}}></input>
+                <label className="fileLable" htmlFor="file" >
+                    <div>파일 첨부</div>
+                </label>
 
-
-                </input>
+                </div>
 
 
                 <input type="button" className="uploadButton" value="확인" onClick={()=>{
