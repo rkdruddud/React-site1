@@ -1,6 +1,7 @@
 
 const express = require('express');
 const session = require('express-session');
+const multer = require('multer');
 const cors = require('cors');
 const path = require('path');
 const app = express();
@@ -19,6 +20,23 @@ const bcrypt = require('bcrypt');
 // 메일을 보내기 위한 모듈 3가지
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
+
+
+// 서버에 multer을 이용한 스토리지 구성.
+const storage = multer.diskStorage({
+    destination: "../Storege/",
+    filename : function(req, file, callback){
+        callback(null, "imgfile" + Date.now()+path.extname(file.originalname));
+
+    }
+})
+
+
+// storage 업로드 
+const upload = multer({
+    storage:storage,
+    limits: {fileSize: 1000000}
+})
 
 
 
@@ -222,4 +240,18 @@ app.post('/ChangePW', (req, res)=>{        // 로그인 성공시 DB의 login �
         }
 
     });
+});
+
+
+//업로드한 이미지들의 url을 전달. 미리보기 가능하도록 함.
+app.post("/file", upload.array("img",30),async (req, res, next)=>{
+
+    console.log("파일 이름 : ", req.files);
+
+    let urlArray = new Array();
+    for(let i=0; i<req.files.length; i++){
+        urlArray.push(`/MyStory/${req.files[i].filename}`);
+    }
+    let jsonUrl = JSON.stringify(urlArray);
+    res.json(jsonUrl);
 });
