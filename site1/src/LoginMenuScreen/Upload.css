@@ -42,8 +42,8 @@ display: block;
 left: 50%;
 top:70px;
 transform: translate(-50%);
-width: 37rem;
-height: 23rem;
+width: 60rem;
+height: 30rem;
 background-color: yellow;
 z-index: 3;
 }
@@ -114,10 +114,10 @@ z-index: 3;
 
 .fileUploadArea{
 position: absolute;
-left: 50%;
-bottom: 80px;
-width: 90%;
-height: 60%;
+left: 25%;
+bottom: 60px;
+width: 40%;
+height: 70%;
 transform: translate(-50%);
 
 
@@ -140,6 +140,47 @@ transform: translate(-50%);
     transform: translate(-50%);
     cursor: pointer;
 }
+
+
+.fileListWrap{
+    position: absolute;
+    align-items: center; 
+    width: 40%;
+    height: 70%;
+    left: 75%;
+    bottom: 60px;
+    overflow-y: auto;
+    transform: translate(-50%);
+    background-color: rgb(255, 255, 255);
+    border:1px solid black;
+    
+}
+
+#fileList {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: aqua;
+}
+
+.fileitem{
+
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    min-height: 2rem;
+    text-align: center;
+    padding-top: 10px;
+    background-color: antiquewhite;
+    display: block;
+    border-bottom: 1px solid black;
+
+}
+
 
 
 
