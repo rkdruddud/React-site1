@@ -1,4 +1,4 @@
-
+const useState = require('react');
 const express = require('express');
 const session = require('express-session');
 const multer = require('multer');
@@ -10,7 +10,7 @@ const PORT = 8080; //포트번호 설정
 const mysql = require('mysql');
 const db = require('./lib/db');
 
-//const db = require('/reactProject1/site1/build/indexc');
+//const db = require('');
 
 const sessionOption = require('./lib/sessionOption');
 const bodyParser = require("body-parser");
@@ -20,23 +20,8 @@ const bcrypt = require('bcrypt');
 // 메일을 보내기 위한 모듈 3가지
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
+const { useState } = require('react');
 
-
-// 서버에 multer을 이용한 스토리지 구성.
-const storage = multer.diskStorage({
-    destination: "../Storege/",
-    filename : function(req, file, callback){
-        callback(null, "imgfile" + Date.now()+path.extname(file.originalname));
-
-    }
-})
-
-
-// storage 업로드 
-const upload = multer({
-    storage:storage,
-    limits: {fileSize: 1000000}
-})
 
 
 
@@ -46,7 +31,7 @@ dotenv.config({path: path.resolve(__dirname, "../../.env")});
 app.use(express.static(path.join(__dirname, '../../build')));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 app.listen(8080, function() {
     console.log('listening on 8080');
@@ -128,6 +113,7 @@ app.get('/Signup', (req, res)=>{        // 로그인 시 아이디와 비밀번�
 app.post('/Signup', (req, res)=>{        // 로그인 성공시 DB의 login 값 변경
     
     const userID = req.body.id;
+    
    
     db.query('UPDATE `userinfo` SET `login`= ? WHERE `id` = ?;',['1',userID] ,  (error, data) =>{
 
@@ -243,7 +229,7 @@ app.post('/ChangePW', (req, res)=>{        // 로그인 성공시 DB의 login �
 });
 
 
-//업로드한 이미지들의 url을 전달. 미리보기 가능하도록 함.
+/*업로드한 이미지들의 url을 전달. 미리보기 가능하도록 함.
 app.post("/file", upload.array("img",30),async (req, res, next)=>{
 
     console.log("파일 이름 : ", req.files);
@@ -254,4 +240,32 @@ app.post("/file", upload.array("img",30),async (req, res, next)=>{
     }
     let jsonUrl = JSON.stringify(urlArray);
     res.json(jsonUrl);
+});*/
+
+
+// 서버에 multer을 이용한 스토리지 구성.
+const storage = multer.diskStorage({
+    destination:"./Storage"
+    ,
+    filename : function(req, file, cb){
+        const uniqueSurffix = Date.now();
+        
+       
+        cb(null, uniqueSurffix + file.originalname);
+    },
+});
+
+
+
+// storage 업로드 
+const upload = multer({
+    storage:storage,
+    limits: {fileSize: 100000000}
+})
+
+
+
+app.post("/Upload", upload.array("file",30),(req, res)=>{
+    console.log("업로드");
+    
 });
