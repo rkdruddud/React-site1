@@ -77,7 +77,7 @@ const userIDInfo = {...location.state};
                     userID : `${userID}`
                 }
             });
-        }}> 업로드 </div>
+        }}> 앨범 생성 </div>
 
         <div className="downicon"  onClick={scrollMovedown} style={{opacity:(190-position)/50}}>
             ↓ 

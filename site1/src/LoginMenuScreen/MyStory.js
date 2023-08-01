@@ -19,6 +19,18 @@ const userIDInfo = {...location.state};
     return (
         <>
          <LoginMain></LoginMain>
+        
+        <div className="StoryContent">
+            <div className="albumWrap">
+                <div className="albumList">
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+
         </>
     )
 }
