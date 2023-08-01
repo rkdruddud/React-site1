@@ -22,6 +22,7 @@ const Upload = () =>{
     const userIDInfo = {...location.state};
 
     const [uploadFile, setUploadFile] = useState([]);
+   
     
 
 
@@ -35,6 +36,7 @@ const Upload = () =>{
 
     const uploadLableHandle = async(e) =>{       // 첨부한 파일명 리스트 생성
         const uploadFileList = e.target.files;
+        
         setUploadFile(uploadFileList);
 
         let listArea = document.getElementById("fileList");
@@ -43,7 +45,7 @@ const Upload = () =>{
         for(let i =0; i<uploadFileList.length; i++){
             
 
-            console.log(uploadFileList[i]);  
+            console.log(e.target.files[i]);  
             
 
             let new_list = document.createElement("div");
@@ -66,22 +68,28 @@ const Upload = () =>{
         const formData = new FormData();
         for(let i =0; i<uploadFile.length; i++){
             
-            
             formData.append("file", uploadFile[i]);     
             
         }
-        axios.post('http://localhost:8080/Upload',{
-            id:id
+        console.log(id);
+       
+        axios.post('http://localhost:8080/Upload',formData,{
+            params:{
+                id:id,
+                title: albumTitle,
+                date:date,
+                fileName:uploadFile
+            }
         });
         
-        axios.post('http://localhost:8080/Upload',formData);
-
+        
         alert("업로드 완료");
 
     }
 
     useEffect(()=>{
         setId(userIDInfo.userID);
+        
     },[]);
     
     return (

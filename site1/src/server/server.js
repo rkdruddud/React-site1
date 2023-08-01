@@ -20,7 +20,7 @@ const bcrypt = require('bcrypt');
 // 메일을 보내기 위한 모듈 3가지
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
-const { useState } = require('react');
+
 
 
 
@@ -31,7 +31,7 @@ dotenv.config({path: path.resolve(__dirname, "../../.env")});
 app.use(express.static(path.join(__dirname, '../../build')));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors());
 
 app.listen(8080, function() {
     console.log('listening on 8080');
@@ -243,19 +243,33 @@ app.post("/file", upload.array("img",30),async (req, res, next)=>{
 });*/
 
 
+
 // 서버에 multer을 이용한 스토리지 구성.
 const storage = multer.diskStorage({
     destination:"./Storage"
     ,
     filename : function(req, file, cb){
         const uniqueSurffix = Date.now();
-        
-       
-        cb(null, uniqueSurffix + file.originalname);
+        const userID = req.query.id;
+        const title = req.query.title;
+        const date = req.query.date;
+    
+        cb(null,req.query.id+req.query.title+file.originalname);
+
+        db.query('INSERT INTO album (userID, title, date, fileName) VALUES(?,?,?,?);',[userID, title, date, file.originalname] ,  (error, data) =>{
+    
+            if(!error){
+            
+                console.log("파일 업로드 완료");
+              
+            }else{
+                console.log(error);
+                res.send(error);
+            }
+    
+        });
     },
 });
-
-
 
 // storage 업로드 
 const upload = multer({
@@ -264,8 +278,29 @@ const upload = multer({
 })
 
 
-
 app.post("/Upload", upload.array("file",30),(req, res)=>{
+   
     console.log("업로드");
     
 });
+
+/*
+ const userID = req.body.id;
+    const title = req.body.title;
+    const date = req.body.date;
+    const fileName = req.body.fileName;
+    console.log(userID);
+  
+        db.query('INSERT INTO album (userID, title, date, fileName) VALUES(?,?,?,?);',[userID, title, date, "a"] ,  (error, data) =>{
+
+            if(!error){
+                console.log(fileName);
+                console.log("파일 업로드 완료");
+              
+            }else{
+                console.log(error);
+                res.send(error);
+            }
+    
+        });
+        */
