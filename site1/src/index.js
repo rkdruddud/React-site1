@@ -15,7 +15,7 @@ import ChangePW from './loginEtcMenu/ChangePW';
 
 import LoginHome from './LoginMenuScreen/LoginHome';
 import MyStory from './LoginMenuScreen/MyStory';
-import CreateStory from './LoginMenuScreen/CreateStroy';
+import CreateStory from './LoginMenuScreen/CreateStory';
 
 import Upload from './LoginMenuScreen/Upload';
 
@@ -32,7 +32,7 @@ root.render(
       
       <Route path='/Upload' element={<Upload/>} />
       <Route path='/LoginHome' element={<LoginHome/>} />
-      <Route path='/MyStroy' element={<MyStory/>} />
+      <Route path='/MyStory' element={<MyStory/>} />
      <Route path='/CreateStory' element={<CreateStory/>} />   
       <Route path='/ChangePW' element={<ChangePW/>} />
      <Route path='/SignUp' element={<SignUp/>} />

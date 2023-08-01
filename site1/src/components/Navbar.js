@@ -34,7 +34,7 @@ const closeMobileMenu = () => {
     <div className="navbar-containar">
         <div className="navbar-logo">
             
-            <GiBowlSpiral className="navbar-logo-icon"></GiBowlSpiral> MyStroy
+            <GiBowlSpiral className="navbar-logo-icon"></GiBowlSpiral> MyStory
         </div>
         <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fa-times" : "fa-bars"} />  

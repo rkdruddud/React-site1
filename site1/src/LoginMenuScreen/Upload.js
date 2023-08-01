@@ -2,6 +2,8 @@ import React,{useState,useEffect,useCallback, useMemo} from "react";
 import "../LoginMenuScreen/Upload.css";
 import {useNavigate, useLocation} from "react-router-dom";
 import axios from "axios";
+import backImg from "../images/skynight3.jpg";
+
 
 
 const Upload = () =>{
@@ -15,6 +17,9 @@ const Upload = () =>{
     const [id, setId] = useState('');
     const [albumTitle, setAlbumTitle] = useState('');
     const [date, setDate] = useState('');
+
+    const [formClass, setFormClass] = useState('fileUploadAreaBasic');
+    const [changeFileListWrap,setChangeFileListWrap] = useState('fileListWrapBasic');
 
 
     const [count, setCount] = useState(0);
@@ -34,6 +39,12 @@ const Upload = () =>{
     setDate(e.target.value);
    }
 
+
+   useEffect(()=>{
+    setId(userIDInfo.userID);
+    console.log(userIDInfo.userID);
+},[]);
+
     const uploadLableHandle = async(e) =>{       // 첨부한 파일명 리스트 생성
         const uploadFileList = e.target.files;
         
@@ -41,7 +52,10 @@ const Upload = () =>{
 
         let listArea = document.getElementById("fileList");
        let num =count;
-    
+        if(uploadFileList.length>0){
+            setFormClass("fileUploadArea");
+            setChangeFileListWrap("fileListWrap");
+        }
         for(let i =0; i<uploadFileList.length; i++){
             
 
@@ -64,47 +78,59 @@ const Upload = () =>{
 
     }
 
-    const submitUploadFile = () =>{
+    const submitUploadFile = () =>{         // 첨부한 파일 Storage와 Db에 저장
         const formData = new FormData();
-        for(let i =0; i<uploadFile.length; i++){
-            
-            formData.append("file", uploadFile[i]);     
-            
+
+        if(albumTitle.length===0){
+            alert("제목을 입력해주세요.");
+        }else if(date.length===0){
+            alert("날짜를 선택해주세요.");
         }
-        console.log(id);
-       
-        axios.post('http://localhost:8080/Upload',formData,{
-            params:{
-                id:id,
-                title: albumTitle,
-                date:date,
-                fileName:uploadFile
+        else{
+
+            for(let i =0; i<uploadFile.length; i++){
+            
+                formData.append("file", uploadFile[i]);     
+                
             }
-        });
+            console.log(id);
+           
+            axios.post('http://localhost:8080/Upload',formData,{
+                params:{
+                    id:id,
+                    title: albumTitle,
+                    date:date,
+                    fileName:uploadFile
+                }
+            });
         
-        
-        alert("업로드 완료");
+            navigate("/MyStory",{
+               state: {
+                    userID: `${id}`
+                }
+            })
+
+            alert("업로드 완료");    
+        }
 
     }
 
-    useEffect(()=>{
-        setId(userIDInfo.userID);
-        
-    },[]);
     
     return (
         <>
         <div className="UploadContent">
+            <img src={backImg} className="backgroundImg"></img>
+            <h2>Create your album</h2>
             <div className="UploadContentWrap">
             
-                <h2>Create your album</h2>
+                
             
             <div className="uploadInnerWrap">
                
                 <div className="headWrap">
                 <div className="titleWrap">
                     <div className="text1">title</div>
-                    <input type="text" className="inputTitle" onChange={albumTitleHandle} value={albumTitle}></input>
+                    <input type="text" className="inputTitle" onChange={albumTitleHandle} value={albumTitle} placeholder="제목 입력"></input>
                 </div>
 
                 <div className="dateWrap">
@@ -112,8 +138,8 @@ const Upload = () =>{
                 <input type="date" className="inputDate" onChange={dateHandle} value={date}></input>
                 </div>
                 </div>
-                
-                <form className="fileUploadArea" encType="multipart/form-data">
+                <hr></hr>
+                <form className={formClass} encType="multipart/form-data">
                 <input type="file" id="file" multiple={true}  onChange={uploadLableHandle} style={{display:"none"}}></input>
                 <label className="fileLable" htmlFor="file" >
                     <div>파일 첨부</div>
@@ -121,7 +147,7 @@ const Upload = () =>{
 
                 </form>
 
-                <div className="fileListWrap">
+                <div className={changeFileListWrap}>
                     <div id="fileList" >
                         
                     </div>
@@ -133,7 +159,11 @@ const Upload = () =>{
                 </button>
 
                 <input type="button" className="cancleButton" value="취소" onClick={()=>{
-                    window.location.replace("/MyStroy");
+                    window.location.replace("/CreateStory",{
+                        state:{
+                            userID: `${id}`
+                        }
+                    });
                 }}></input>
 
             </div>

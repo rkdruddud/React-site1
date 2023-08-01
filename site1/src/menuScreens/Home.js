@@ -44,7 +44,7 @@ const Home = () => {
    opacity:(125-position),
    transition:"3s"
 }}>
-<h1 style={{marginLeft:"120px"}}> MyStroy에 오신것을 환영합니다.
+<h1 style={{marginLeft:"120px"}}> MyStory에 오신것을 환영합니다.
                 </h1>
                 <h2 style={{marginLeft:"250px"}}>나만의 여행 기록을 남겨봐요.</h2>
 </div>
@@ -77,12 +77,11 @@ const Home = () => {
     <div className="sticker2"></div>
 
     <div className="explainText">
-      <h2>MyStroy 사용방법</h2>
+      <h2>MyStory 사용방법</h2>
       1. 회원가입<br/>
       2. 로그인<br/>
-      3. MyStroy페이지에서 업로드 클릭 <br/>
-      4. 제목과 사진들 업로드<br/>
-      5. MyStory 페이지에서 확인
+      3. CreateStory 페이지에서 업로드<br/>
+      4. MyStory 페이지에서 확인
     </div>
     
    

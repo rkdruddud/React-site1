@@ -27,7 +27,7 @@ const LoginHome = ()=>{
 
     useEffect(()=>{
         setUserID(userIDInfo.userID);
-        
+        console.log(userIDInfo.userID);
     },[]);
     
     return (

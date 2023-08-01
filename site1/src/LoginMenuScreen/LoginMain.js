@@ -8,8 +8,8 @@ import {GiBowlSpiral} from 'react-icons/gi';
 import "../LoginMenuScreen/LoginMain.css";
 import axios from "axios";
 
-import MyStory from '../LoginMenuScreen/MyStory';
-import CreateStory from '../LoginMenuScreen/CreateStroy';
+import CreateStory from './CreateStory';
+import MyStory from './MyStory';
 import LoginHome from '../LoginMenuScreen/LoginHome';
 
 const LoginMain = (props) => {
@@ -26,8 +26,22 @@ const userIDInfo = {...location.state};
 
 const navigte = useNavigate();
 
+
 useEffect(()=>{
+    
+    if(!props.value){
+       if(!userIDInfo.userID){
+            console.log("아이디 값이 없음.");
+       }else{
+        setUserID(userIDInfo.userID);
+        console.log(userIDInfo.userID);
+       }
+
+    }else {
+     
     setUserID(props.value);
+    console.log(props.value);   
+    }
 },[props]);
 
 
@@ -55,9 +69,9 @@ const logoutHandle = () =>{
 }
 
 
-const loadMyStroy = ()=>{
+const loadMyStory = ()=>{
     closeMobileMenu();
-    navigate('/MyStroy',{
+    navigate('/MyStory',{
         state: {
             userID : `${userID}`
         }
@@ -66,6 +80,7 @@ const loadMyStroy = ()=>{
 
 const loadCreateStory = ()=>{
     closeMobileMenu();
+    console.log(userID);
     navigate('/CreateStory',{
         state: {
             userID : `${userID}`
@@ -80,7 +95,7 @@ const loadCreateStory = ()=>{
       <div className="navbar-containar2">
           <div className="navbar-logo2">
               
-              <GiBowlSpiral className="navbar-logo-icon2"></GiBowlSpiral> MyStroy
+              <GiBowlSpiral className="navbar-logo-icon2"></GiBowlSpiral> MyStory
           </div>
           <div className="menu-icon2" onClick={handleClick}>
               <i className={click ? "fa-times2" : "fa-bars2"} />  
@@ -95,8 +110,8 @@ const loadCreateStory = ()=>{
                   </Link>
               </li>
               <li className="nav-item2">
-                  <div  className="nav-links2" onClick={loadMyStroy}>
-                      MyStroy
+                  <div  className="nav-links2" onClick={loadMyStory}>
+                      MyStory
                   </div>
               </li>
               <li className="nav-item2">
