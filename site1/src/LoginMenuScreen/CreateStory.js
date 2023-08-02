@@ -23,6 +23,7 @@ const CreateStory = ()=>{
 const userIDInfo = {...location.state};
     useEffect(()=>{
         console.log(userIDInfo.userID);
+        console.log("크리에이트 useEffect실행");
         setUserID(userIDInfo.userID);
      
     },[]);

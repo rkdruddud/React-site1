@@ -284,23 +284,17 @@ app.post("/Upload", upload.array("file",30),(req, res)=>{
     
 });
 
-/*
- const userID = req.body.id;
-    const title = req.body.title;
-    const date = req.body.date;
-    const fileName = req.body.fileName;
-    console.log(userID);
-  
-        db.query('INSERT INTO album (userID, title, date, fileName) VALUES(?,?,?,?);',[userID, title, date, "a"] ,  (error, data) =>{
+app.get("/MyStory",(req,res)=>{
 
-            if(!error){
-                console.log(fileName);
-                console.log("파일 업로드 완료");
-              
-            }else{
-                console.log(error);
-                res.send(error);
-            }
-    
-        });
-        */
+    const params = req.query.id;
+    console.log(params);
+    db.query('SELECT * FROM `album` WHERE `userID` = ?', params, (error, data) =>{
+        if(!error){
+            console.log(data);
+            res.send(data);
+        }else {
+            res.send("none");
+        }
+    });
+
+});
