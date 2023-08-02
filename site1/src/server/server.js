@@ -10,7 +10,7 @@ const PORT = 8080; //포트번호 설정
 const mysql = require('mysql');
 const db = require('./lib/db');
 
-//const db = require('');
+//const db = require('../../public/Storage');
 
 const sessionOption = require('./lib/sessionOption');
 const bodyParser = require("body-parser");
@@ -246,7 +246,7 @@ app.post("/file", upload.array("img",30),async (req, res, next)=>{
 
 // 서버에 multer을 이용한 스토리지 구성.
 const storage = multer.diskStorage({
-    destination:"./Storage"
+    destination:"../../public/Storage"
     ,
     filename : function(req, file, cb){
         const uniqueSurffix = Date.now();

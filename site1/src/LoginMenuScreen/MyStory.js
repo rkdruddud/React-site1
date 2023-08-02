@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
 import "../LoginMenuScreen/MyStory.css";
-import {Routes, Route, Link, useNavigate, useLocation} from "react-router-dom";
+import {Routes, Route, Link, useNavigate, useLocation, Navigate} from "react-router-dom";
 import LoginMain from "./LoginMain";
 import axios from "axios";
 
@@ -8,24 +8,30 @@ import axios from "axios";
 const MyStory = ()=>{
    
     const [userID, setUserID] = useState('');
+    
     const [albumExitence, setAlbumExitence] = useState('visibleMessage');
 
     const location = useLocation();
     const userIDInfo = {...location.state};
+    const navigate = useNavigate();
+
 
 const findIDExitence = async(props) =>{              // 해당 유저의 아이디로 앨범의 유무를 확인
-   const response = await axios.get("http://localhost:8080/Mystory",{
+    
+    const response = await axios.get("http://localhost:8080/Mystory",{
             params:{
                 'id':props
             }
         });
-
+        
         try{
 
-            
-            if(!response.data[0].id && (await response).data === "none"){
+            if(response.data.length === 0){
+                
+                console.log("메시지 보임");
                 setAlbumExitence('visibleMessage');
             }else{
+                console.log("메시지 안보임");
                 setAlbumExitence('hiddenMessage');
             }
         }catch(e){
@@ -34,9 +40,9 @@ const findIDExitence = async(props) =>{              // 해당 유저의 아이�
 }
 
 
-    const createAlbumCard = async(props) =>{
-        let listArea = document.getElementById("albumList");
-        
+    const createAlbumCard = async(props) =>{        // 데이터베이스 정보를 통한 사용자의 앨범 생성
+        let listArea = document.getElementById("cardWrap");
+                
 
         const response = await axios.get("http://localhost:8080/Mystory",{
            params:{
@@ -45,40 +51,67 @@ const findIDExitence = async(props) =>{              // 해당 유저의 아이�
         });
 
         try{
-            
+           
             console.log(response.data.length);
             for(let i=0, compareValue = 0; i<response.data.length; i++){
                      
-                
-                console.log(response.data[i].fileName);
 
                 {
-                    if(i===0){
+                    if(i===0){      // 처음 앨범 생성
                         console.log(response.data[i].title);        
                         let new_album = document.createElement("div");
+                        let imgURL = "Storage/"+response.data[i].userID+response.data[i].title+response.data[i].fileName;
                         new_album.setAttribute("class","card");
-                   
-                        new_album.innerHTML= `<img src=${require("../server/Storage/ruddudqweKakaoTalk_20220930_170052719_01.jpg").default}></img>
+
+                        new_album.setAttribute("id","card");
+                        
+
+                        //console.log(imgURL);
+                        
+                        new_album.innerHTML= `<img src=${imgURL}></img>
                         <div>제목 : ${response.data[compareValue].title}<br/>생성 날짜 : ${response.data[compareValue].date}</div>`;
-                        
-                        
-                        
                         listArea.appendChild(new_album);
-                        console.log("생성");
-                    }else if(response.data[compareValue].title === response.data[i].title){
+                        
+                        const albumcard = document.getElementById("card");      // 동적 생성된 카드의 아이디 할당
                        
-                        console.log("같은것 존재");
+                        albumcard.addEventListener("click",()=>{            // 동적 생성된 카드에 클릭 이벤트 등록
+                            navigate("/AlbumIMG",{
+                                state:{
+                                    userID:userID,
+                                    title: response.data[i].title
+                                }
+                            });
+                        });
+                        //console.log("생성");
+                    }else if(response.data[compareValue].title === response.data[i].title){     //첫 앨범과 같으면 continue
+                       
+                        //console.log("같은것 존재");
                         continue;
-                    }else {
+                    }else {     // 앞에 앨범과 제목이 다른 앨범이 나타나면 새로 생성
                         
                         compareValue = i;
-                        console.log(response.data[compareValue].title);
+                        
                         let new_album = document.createElement("div");
+                        let imgURL = "Storage/"+response.data[i].userID+response.data[i].title+response.data[i].fileName;
+                        
                         new_album.setAttribute("class","card");
-                        new_album.innerHTML= `<img src=${require("../server/Storage/ruddudqweKakaoTalk_20220930_170052719_01.jpg").default}></img>
+                        new_album.setAttribute("id","card"+{i});
+                        
+                        new_album.innerHTML= `<img src=${imgURL}></img>
                         <div>제목 : ${response.data[compareValue].title}<br/>날짜 : ${response.data[compareValue].date}</div>`;
                         listArea.appendChild(new_album);
                         
+                        const albumcard2 = document.getElementById("card"+{i});
+                        console.log("두번째 생성 카드 이벤트");
+                        albumcard2.addEventListener("click",()=>{
+                            console.log("두번째 생성 카드 이벤트2");
+                            navigate("/AlbumIMG",{
+                                state:{
+                                    userID:userID,
+                                    title: response.data[i].title
+                                }
+                            });
+                        });
                     }
                         
                     
@@ -106,7 +139,9 @@ const findIDExitence = async(props) =>{              // 해당 유저의 아이�
         <div className="StoryContent">
             <div className="albumWrap">
                 <div id="albumList" className="albumList" >
-                   
+                  <div id="cardWrap" className="cardWrap">
+
+                  </div>
                     <div className={albumExitence}>
                          아직 올라온게 없어요..
                         </div> 
