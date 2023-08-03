@@ -298,3 +298,22 @@ app.get("/MyStory",(req,res)=>{
     });
 
 });
+
+app.get("/AlbumIMG",(req,res)=>{
+
+    const userID = req.query.id;
+    const title = req.query.title;
+
+    console.log(userID);
+    console.log(title);
+
+    db.query('SELECT * FROM `album` WHERE `userID` = ? AND `title`=?', [userID, title], (error, data) =>{
+        if(!error){
+            console.log(data);
+            res.send(data);
+        }else {
+            res.send("none");
+        }
+    });
+
+});

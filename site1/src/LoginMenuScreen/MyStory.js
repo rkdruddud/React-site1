@@ -77,7 +77,7 @@ const findIDExitence = async(props) =>{              // 해당 유저의 아이�
                         albumcard.addEventListener("click",()=>{            // 동적 생성된 카드에 클릭 이벤트 등록
                             navigate("/AlbumIMG",{
                                 state:{
-                                    userID:userID,
+                                    userID:response.data[i].userID,
                                     title: response.data[i].title
                                 }
                             });
@@ -92,23 +92,24 @@ const findIDExitence = async(props) =>{              // 해당 유저의 아이�
                         compareValue = i;
                         
                         let new_album = document.createElement("div");
-                        let imgURL = "Storage/"+response.data[i].userID+response.data[i].title+response.data[i].fileName;
+                        let imgURL = "Storage/"+response.data[compareValue].userID+response.data[compareValue].title+response.data[compareValue].fileName;
                         
                         new_album.setAttribute("class","card");
-                        new_album.setAttribute("id","card"+{i});
+                        new_album.setAttribute("id","card"+compareValue);
                         
                         new_album.innerHTML= `<img src=${imgURL}></img>
                         <div>제목 : ${response.data[compareValue].title}<br/>날짜 : ${response.data[compareValue].date}</div>`;
                         listArea.appendChild(new_album);
                         
-                        const albumcard2 = document.getElementById("card"+{i});
+                        const albumcard2 = document.getElementById("card"+compareValue);
                         console.log("두번째 생성 카드 이벤트");
+                        console.log(albumcard2);
                         albumcard2.addEventListener("click",()=>{
-                            console.log("두번째 생성 카드 이벤트2");
+                            console.log(compareValue);
                             navigate("/AlbumIMG",{
                                 state:{
-                                    userID:userID,
-                                    title: response.data[i].title
+                                    userID:response.data[compareValue].userID,
+                                    title: response.data[compareValue].title
                                 }
                             });
                         });
@@ -138,12 +139,22 @@ const findIDExitence = async(props) =>{              // 해당 유저의 아이�
         
         <div className="StoryContent">
             <div className="albumWrap">
+                <div className="backgroundText">
+                Mystory album
+                </div>
+                
                 <div id="albumList" className="albumList" >
+                  <div className="topText">
+                        MyStory album into the Web
+                  </div>
                   <div id="cardWrap" className="cardWrap">
 
                   </div>
                     <div className={albumExitence}>
-                         아직 올라온게 없어요..
+                         Create your album
+                         <div>
+                            Let's create your album
+                         </div>
                         </div> 
                 </div>
 

@@ -5,3 +5,11 @@
 
     font-style: normal;
 }
+
+@font-face {
+    font-family: "MrDafoe";
+    font-display: fallback;
+    src: url("./MrDafoe-Regular.ttf") format("truetype");
+
+    font-style: normal;
+}
