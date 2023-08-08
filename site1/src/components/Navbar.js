@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 import {Routes, Route, Link} from "react-router-dom";
 import Home from "../menuScreens/Home";
-import Product from "../menuScreens/Product";
-import Guide from "../menuScreens/Guide";
 import SignUp from "../menuScreens/SignUp";
 import {GiHamburgerMenu} from 'react-icons/gi';
 
@@ -25,6 +23,7 @@ const handleClick = () => {
 }
 
 const closeMobileMenu = () => {
+    window.history.replaceState(null,null,"./SignUp");
     setClick(false);
     setClickicon(false);
 }
@@ -34,7 +33,10 @@ const closeMobileMenu = () => {
     <div className="navbar-containar">
         <div className="navbar-logo">
             
+            
+            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
             <GiBowlSpiral className="navbar-logo-icon"></GiBowlSpiral> MyStory
+                </Link>
         </div>
         <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fa-times" : "fa-bars"} />  
@@ -43,22 +45,7 @@ const closeMobileMenu = () => {
              }      
         </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-                <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                    Home
-                </Link>
-            </li>
-            <li className="nav-item">
-                <Link to="/Product" className="nav-links" onClick={closeMobileMenu}>
-                    Product
-                </Link>
-            </li>
-            <li className="nav-item">
-                <Link to="/Guide" className="nav-links" onClick={closeMobileMenu}>
-                    Guide
-                </Link>
-            </li>
-        
+            
             <li className="nav-item">
             <Link to="/SignUp" className="nav-links-mobile" onClick={closeMobileMenu}>
                     Sign Up
@@ -71,8 +58,6 @@ const closeMobileMenu = () => {
   </nav>
         <Routes>
             <Route path="/" element={<Home/>}></Route>
-            <Route path="/Product" element={<Product/>}></Route>
-            <Route path="/Guide" element={<Guide/>}></Route>
             <Route path="/SignUp/*" element={<SignUp/>}></Route>
         </Routes>
   </>

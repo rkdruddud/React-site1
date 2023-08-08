@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useCallback, useMemo} from "react";
+import React,{useState,useEffect} from "react";
 import "../LoginMenuScreen/Upload.css";
 import {useNavigate, useLocation} from "react-router-dom";
 import axios from "axios";
@@ -42,7 +42,7 @@ const Upload = () =>{
 
    useEffect(()=>{
     setId(userIDInfo.userID);
-    console.log(userIDInfo.userID);
+    
 },[]);
 
     const uploadLableHandle = async(e) =>{       // 첨부한 파일명 리스트 생성
@@ -58,15 +58,12 @@ const Upload = () =>{
         }
         for(let i =0; i<uploadFileList.length; i++){
             
-
-            console.log(e.target.files[i]);  
-            
-
+        
             let new_list = document.createElement("div");
             new_list.setAttribute("class","fileitem");
             new_list.setAttribute("onClick",()=>{
                     listArea.removeChild(listArea.new_list);
-                    console.log("삭제");
+        
             });
             new_list.innerHTML= e.target.files[i].name;
             listArea.appendChild(new_list);
@@ -93,7 +90,7 @@ const Upload = () =>{
                 formData.append("file", uploadFile[i]);     
                 
             }
-            console.log(id);
+        
            
             axios.post('http://localhost:8080/Upload',formData,{
                 params:{
@@ -112,7 +109,15 @@ const Upload = () =>{
 
             alert("업로드 완료");    
         }
+    }
 
+    const onClickCancelBtn = ()=>{
+
+        navigate("/CreateStory",{
+            state: {
+                 userID: `${id}`
+             }
+         });
     }
 
     
@@ -158,13 +163,7 @@ const Upload = () =>{
                  확인
                 </button>
 
-                <input type="button" className="cancleButton" value="취소" onClick={()=>{
-                    window.location.replace("/CreateStory",{
-                        state:{
-                            userID: `${id}`
-                        }
-                    });
-                }}></input>
+                <input type="button" className="cancleButton" value="취소" onClick={onClickCancelBtn}></input>
 
             </div>
 

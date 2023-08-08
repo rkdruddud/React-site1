@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../loginEtcMenu/FindID.css";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import {GiBowlSpiral} from 'react-icons/gi';
 
 const FindID = () =>{
     
@@ -33,7 +34,6 @@ const FindID = () =>{
                 alert("조회된 아이디가 없습니다.");
             }
         }catch(e){
-            console.log(e);
             alert("조회된 아이디가 없습니다.");
         }
 
@@ -44,10 +44,20 @@ const FindID = () =>{
 
     }
     
+    const goHome = ()=>{
+        window.history.replaceState(null,null,"/");
+        navigate("/");
+    }
+
 
     return (
 
         <div className="idContainer">
+
+<div className="goBackHome_FindID" onClick={goHome}>
+            <div><GiBowlSpiral className="homeICON_FindID"></GiBowlSpiral>MyStory</div>
+          </div>
+
             <div className="idBoxWrap">
             <h2 className="Texts"> 아이디 찾기</h2>
             <hr></hr>

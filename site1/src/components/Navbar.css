@@ -74,21 +74,12 @@
   .menu-icon {
     display: none;
   }
-  .nav-links:hover {
-    border-bottom: 4px solid #fff;
-    transition: all 0.2s ease-out;
-    background-color: #fff;
-    color: black;
-    height: 36px;
-    margin-top: 30px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-  }
+  
   
   .nav-links-mobile {
     display: block;
     text-align: center;
-    margin: 20px auto;
+    margin: 40px auto;
     border-radius: 4px;
     width: 80%;
     text-decoration: none;
@@ -102,7 +93,7 @@
   .nav-links-mobile:hover {
     display: block;
     text-align: center;
-    margin: 20px auto;
+    margin: 40px auto;
     border-radius: 4px;
     width: 80%;
     text-decoration: none;

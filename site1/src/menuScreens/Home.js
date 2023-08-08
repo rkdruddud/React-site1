@@ -1,12 +1,10 @@
 import React,{useEffect, useState} from "react";
 import "../menuScreens/Home.css";
-import Product from "./Product";
-import {Link, Route} from "react-router-dom";
 import Image1 from "../images/image1.jpg";
 import Image2 from "../images/image2.jpg";
 import Image3 from "../images/image3.jpg";
-import Image4 from "../images/image4.jpg";
-import Image5 from "../images/image5.jpg";
+import Image4 from "../images/image9.jpg";
+import Image5 from "../images/image8.jpg";
 import backgroundIMG from "../images/backimg1.jpg";
 import vector from "../images/vector1.png";
 import ground from "../images/ground.jpg";
@@ -14,13 +12,31 @@ import camera from "../images/camera.jpg";
 const Home = () => {
   
   const [position, setPosition] = useState(0);
+  const [position2,setPosition2] = useState(0);
 
   const [windowWith, setWindowWith] = useState(0);
+  const [trans, setTrans] = useState("3s");
+  const [display, setDisplay] = useState("block");
 
   const onScroll = () => {
-    console.log(window.scrollY);
-    setPosition(window.scrollY); 
-   
+    
+     
+     if(window.scrollY > 150 && window.scrollY<270){
+      
+      setPosition2(1.2);
+      setTrans("0s");   
+    }
+    else if(window.screenY>270){
+      setDisplay("none");
+      setPosition(0); 
+    }
+    else if(window.scrollY <150) {
+      setDisplay("block");
+      setTrans("3s");
+      setPosition(window.scrollY);
+      setPosition2(0);
+    }
+
   }
 
  
@@ -42,7 +58,8 @@ const Home = () => {
 <div className="HomeImageContainer" >
 <div className="TextAreaWrap" style={{
    opacity:(125-position),
-   transition:"3s"
+   transition:trans,
+   display:display
 }}>
 <h1 style={{marginLeft:"120px"}}> MyStory에 오신것을 환영합니다.
                 </h1>
@@ -51,17 +68,20 @@ const Home = () => {
 
 
 <div className="backgoundIMGContainer" style={{
-  transform: `translateY(${(position-(windowWith/4.9))*1.2}px)`,
-  opacity:(464-position),
+  transform: `translateY(${(position-(windowWith/4.9))*(1.2-position2)}px)`,
+  
   height:`{position/0.1}rem`,
-  transition:"2s"
+  transition:"2s",    //2s
+  display:display
+
 }}>
 <img className="homeimg"  src={backgroundIMG} ></img>
 
 </div>
 <img className="vector" src={vector} style={{
   transform: `translateY(${-position*1.2}px)`,
-  transition:"3s"
+  transition:trans,
+  display:display   
   }}></img>
 
 
@@ -69,7 +89,7 @@ const Home = () => {
 
 <div className="blind" style={{
   transform: `translateY(${-position*1.2}px)`,
-  transition:"3s"
+  transition:trans
   }}>
     <img src={ground} className="groundImg"></img>
     <div className="sticker"></div>
@@ -109,36 +129,6 @@ const Home = () => {
 
 
     
-
-</div>
-<div className="box1" >
-
-</div>
-
-<div className="imageCardfullContainer">
-<div className="imageContainer" >
-  <div className="imageCard" >
-  <img className="sampleimg1" src={Image1} ></img>
-  <div className="imgText"> 샘플 사진 1번<br/><a href="./Product">Learn more</a></div>
-  </div>
-  <div className="imageCard">
-  <img className="sampleimg2" src={Image2}></img>
-  </div>
-  <div className="imageCard">
-  <img className="sampleimg3" src={Image3}></img>
-    <div className="imgText"> hello</div>
-  </div>
-  <div className="imageCard">
-  <img className="sampleimg1" src={Image1}></img>
-  </div>
-  <div className="imageCard">
-  <img className="sampleimg4" src={Image4}></img>
-  </div>
-  <div className="imageCard">
-  <img className="sampleimg4" src={Image5}></img>
-  </div>
-  
-</div>
 
 </div>
 

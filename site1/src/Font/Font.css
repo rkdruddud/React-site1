@@ -13,3 +13,12 @@
 
     font-style: normal;
 }
+
+
+@font-face {
+    font-family: "BebasNeue";
+    font-display: fallback;
+    src: url("./BebasNeue-Regular.ttf") format("truetype");
+
+    font-style: normal;
+}

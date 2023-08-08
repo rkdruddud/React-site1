@@ -17,9 +17,9 @@
 
     position: absolute;
     height: 33rem;
-    width: 50%;
+    width: 120vh;
     left: 50%;
-    bottom: 50%;
+    bottom: 45%;
     transform: translate(-50%, 50%);
     display: flex;
     object-position: center;
@@ -33,15 +33,16 @@
 
 .UploadContent h2 {
     position: absolute;
-    bottom: 85%;
+    top:1vh;
     left: 50%;
     width: 26.5rem;
     height: 2rem;
     color: #fff;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%);
     font-size: 3rem;
     font-weight: 500px;
     z-index: 3;
+    cursor: default;
 }
 
 .uploadInnerWrap {
@@ -58,7 +59,7 @@ z-index: 3;
 .headWrap{
    position: absolute;
     display: inline-block;
-    width: 100%;
+    width: 120vh;
     height: 3rem;
     
    
@@ -75,8 +76,8 @@ hr {
 
 .titleWrap{
     display: inline-block;
-    width: 25%;
-    height: 100%;
+    width: 40vh;
+    height: 5vh;
     padding-top: 10px;
     margin-left: 5rem;
 
@@ -104,12 +105,13 @@ hr {
     color: #fff;
     margin-left: 1rem;
     margin-right: 5px;
+    cursor: default;
 }
 
 .dateWrap{
     display: inline-block;
-    width: 30%;
-    height: 100%;
+    width: 40vh;
+    height: 5vh;
     padding-top: 10px;
 }
 
@@ -131,6 +133,7 @@ hr {
     color: #fff;
     margin-left: 2rem;
     margin-right: 5px;
+    cursor: default;
 }
 
 .fileUploadArea{
@@ -148,8 +151,8 @@ transition: 2s;
     position: absolute;
     left: 50%;
     bottom: 75px;
-    width: 80%;
-    height: 65%;
+    width: 95vh;
+    height: 40vh;
     transform: translate(-50%);
     }
 
@@ -255,26 +258,26 @@ transition: 2s;
 
 .uploadButton{
     position: absolute;
-    left: 58%;
+    left: 320px;
     bottom: 10px;
-    transform: translate(-50%);
     width: 8rem;
     height: 2.5rem;
     border-radius: 4px;
     color: #fff;
     border: 1px solid #fff;
     background-color: rgba(119, 5, 134, 0.712);
+    cursor: pointer;
 }
 
 .cancleButton{
     position: absolute;
-    left: 42%;
-    bottom: 10px;
-    transform: translate(-50%);
+    left: 500px;
+    bottom: 10px;   
     width: 8rem;
     height: 2.5rem;
     border-radius: 4px;
     color: #fff;
     border: 1px solid #fff;
     background-color: rgba(119, 5, 134, 0.712);
+    cursor: pointer;
 }

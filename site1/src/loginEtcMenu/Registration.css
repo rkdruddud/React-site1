@@ -17,13 +17,15 @@
 
 .infoWrap {
     position: absolute;
-    padding: 30px;
     left: 50%;
     bottom: 50%;
     transform: translate(-50%, 50%);
     display: block;
     width: 30rem;
-    height: 50rem;
+    height: auto;
+    padding: 30px;
+    padding-top: 10px;
+    padding-bottom: 40px;
     background-color: white;
     box-shadow: 4px 3px 5px 3px rgba(128, 128, 128, 0.39);
     border-radius: 4px;
@@ -150,4 +152,39 @@ h3 {
 
 .email::placeholder {
     color: #c4c1c1;
+}
+
+
+.goBackHome_Registraition{
+    position:absolute;
+    font-size: 30px;
+    margin: 3rem;
+    top:0;
+    left: 0;
+    padding: 0;
+   z-index: 90;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 900px;
+
+}
+
+.goBackHome_Registraition div{
+    color: black;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+
+}
+
+.homeICON_Registration{
+    color: black;
+    justify-self: start;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+   
 }

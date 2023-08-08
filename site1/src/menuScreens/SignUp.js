@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import "./SignUp.css";
-import LoginMain from "../LoginMenuScreen/LoginHome";
+
 import FindID from "../loginEtcMenu/FindID";
 import FindPW from "../loginEtcMenu/FindPW";
 import Registration from "../loginEtcMenu/Registration";
 import {Routes, Route, Link, useNavigate} from "react-router-dom";
 import axios from "axios";
-
+import {GiBowlSpiral} from 'react-icons/gi';
 
 const SignUp = () => {
 
@@ -18,8 +18,7 @@ const SignUp = () => {
 
     const [notAllow, setNotAllow] = useState(true);
 
-    const [loginIdValid, setLoginIdValid] = useState(false);
-    const [loginPwValid, setLoginPwValid] = useState(false);
+    
 
     const navigate = useNavigate();
 
@@ -58,13 +57,16 @@ const SignUp = () => {
     },[idValid, pwValid]);
 
 
+    const onKeyPressHandle = (e) =>{   //enter키 입력 이벤트
+        if(e.key === 'Enter'){
+            loginHandle();
+        }
+    }
+
     const loginHandle = async() =>{   // 로그인 버튼 클릭 함수
 
-        console.log("버튼 클릭");
-      
-        console.log(idValid);
-        console.log(pwValid);
-        let respons = await axios.get('http://localhost:8080/Signup',{
+        
+      let respons = await axios.get('http://localhost:8080/Signup',{
            params:{
             'id': id
            } 
@@ -73,13 +75,13 @@ const SignUp = () => {
         try{
          
             if(respons.data[0].id === id && idValid){
-                setLoginIdValid(true);
+                
             
                 try{
                    
                     
                     if(pw === respons.data[0].password && pwValid){
-                        setLoginIdValid(true);
+                     
                         
                         
                     try{
@@ -89,6 +91,7 @@ const SignUp = () => {
                         });
                        
                         alert("로그인 성공");
+                        window.history.replaceState(null,null,"./LoginHome");
                         navigate("/LoginHome",{
                             state: {
                                 userID : `${id}`
@@ -105,7 +108,7 @@ const SignUp = () => {
                         alert("비밀번호가 다릅니다.");  
                     }
                 }catch(e){
-                    setLoginPwValid(false);
+                    
                     alert("비밀번호가 다릅니다.");
                 }
 
@@ -114,17 +117,31 @@ const SignUp = () => {
             }
             
         }catch(e){
-            setLoginIdValid(false);
+            
           alert("등록된 아이디가 없습니다.");  
         }
 
    
     }
 
+    const goHome = ()=>{
+        window.history.replaceState(null,null,"/");
+        navigate("/",{
+            state: {
+                userID : `${id}`
+            }
+        });
+    }
+
 
     return (
         <>
+        
         <div className="LoginBackground" >
+        
+        <div className="goBackHome" onClick={goHome}>
+            <div><GiBowlSpiral className="homeICON"></GiBowlSpiral>MyStory</div>
+          </div>
 
         <div className="loginContainer">
                 <h1 className="loginText">로그인</h1>
@@ -152,7 +169,7 @@ const SignUp = () => {
                 <div className="contentInputWrap">
                 <div className="InputWrap">
                 <input type="password" className="Input" placeholder="비밀번호" value={pw}
-                onChange={pwHandle}></input>
+                onChange={pwHandle} onKeyPress={onKeyPressHandle}></input>
                 </div>
                 
                 <div className="errorMessageWrap">
@@ -170,7 +187,7 @@ const SignUp = () => {
         </div>
 
         
-        <button className="LoginBtn" disabled={notAllow} onClick={loginHandle} >Login</button>
+        <button className="LoginBtn" disabled={notAllow} onClick={loginHandle}  >Login</button>
         
         <div className="etcContent">
        
@@ -181,8 +198,8 @@ const SignUp = () => {
         </div>          
         <Routes>
             <Route path="/Registration" element={<Registration/>}></Route>
-            <Route path="/FindID" exact={true} element={<FindID/>}></Route>
-            <Route path="/FindPW" exact={true} element={<FindPW/>}></Route>
+            <Route path="/FindID" element={<FindID/>}></Route>
+            <Route path="/FindPW" element={<FindPW/>}></Route>
         </Routes>
         </div>
         </div>

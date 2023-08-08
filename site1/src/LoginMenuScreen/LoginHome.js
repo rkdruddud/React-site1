@@ -15,7 +15,7 @@ import ImageSample9 from "../images/image10.jpg";
 import ImageSample10 from "../images/image11.jpg";
 import ImageSample11 from "../images/image12.jpg";
 
-const LoginHome = ()=>{
+const LoginHome = (props)=>{
     
     const [userID, setUserID] = useState('');
     const [locationKeys, setLocationKeys] = useState([]);
@@ -26,8 +26,15 @@ const LoginHome = ()=>{
 
 
     useEffect(()=>{
-        setUserID(userIDInfo.userID);
-        console.log(userIDInfo.userID);
+        
+        if(!props.value){
+            if(!userIDInfo.userID){
+                 console.log("아이디 값이 없음.");
+            }else{
+                setUserID(userIDInfo.userID);
+                
+            }
+        }
     },[]);
     
     return (

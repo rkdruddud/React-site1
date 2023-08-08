@@ -2,7 +2,7 @@ import React ,{useState, useEffect} from "react";
 import "../loginEtcMenu/ChangePW.css";
 import axios from "axios";
 import {useNavigate, useLocation} from "react-router-dom";
-
+import {GiBowlSpiral} from 'react-icons/gi';
 
 const ChangePW = () =>{
 
@@ -20,7 +20,7 @@ const ChangePW = () =>{
     useEffect(()=>{
         setId(userIDInfo.userID);
         
-    },[]);
+    },[userIDInfo.userID]);
 
     
 
@@ -62,10 +62,21 @@ const ChangePW = () =>{
         }
     }
 
+    const goHome = ()=>{
+        window.history.replaceState(null,null,"/");
+        navigate("/");
+    }
+
 
     return (
         <>
         <div className="newPwContentWrap">
+
+        <div className="goBackHome_ChangePW" onClick={goHome}>
+            <div><GiBowlSpiral className="homeICON_ChangePW"></GiBowlSpiral>MyStory</div>
+          </div>
+
+
             <div className="newPwBoxWrap">
             <h2>비밀번호 변경</h2>
             <hr></hr>

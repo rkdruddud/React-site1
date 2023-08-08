@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from "react";
-import {Routes, Route, Link, useNavigate, useLocation} from "react-router-dom";
+import {Routes, Route, useNavigate, useLocation} from "react-router-dom";
 import Home from "../menuScreens/Home";
 import {GiHamburgerMenu} from 'react-icons/gi';
 
@@ -7,10 +7,6 @@ import {AiOutlineClose} from 'react-icons/ai';
 import {GiBowlSpiral} from 'react-icons/gi';
 import "../LoginMenuScreen/LoginMain.css";
 import axios from "axios";
-
-import CreateStory from './CreateStory';
-import MyStory from './MyStory';
-import LoginHome from '../LoginMenuScreen/LoginHome';
 
 const LoginMain = (props) => {
   
@@ -34,13 +30,13 @@ useEffect(()=>{
             console.log("아이디 값이 없음.");
        }else{
         setUserID(userIDInfo.userID);
-        console.log(userIDInfo.userID);
+    
        }
 
     }else {
      
     setUserID(props.value);
-    console.log(props.value);   
+    
     }
 },[props]);
 
@@ -63,11 +59,20 @@ const logoutHandle = () =>{
     axios.post('http://localhost:8080/LogOut',{
         id : userID
     });
-
+    window.history.replaceState(null,null,"/");
     navigate('/');
 
 }
 
+
+const loadLoginHome = ()=>{
+    closeMobileMenu();
+    navigate('/LoginHome',{
+        state: {
+            userID : `${userID}`
+        }
+    });
+}
 
 const loadMyStory = ()=>{
     closeMobileMenu();
@@ -80,7 +85,7 @@ const loadMyStory = ()=>{
 
 const loadCreateStory = ()=>{
     closeMobileMenu();
-    console.log(userID);
+    
     navigate('/CreateStory',{
         state: {
             userID : `${userID}`
@@ -105,9 +110,11 @@ const loadCreateStory = ()=>{
           </div>
           <ul className={click ? "nav-menu active2" : "nav-menu2"}>
               <li className="nav-item2">
-                  <Link to="/LoginHome" state={ {id:userID} } className="nav-links2" onClick={closeMobileMenu}>
-                     Home
-                  </Link>
+                  
+                  <div  className="nav-links2" onClick={loadLoginHome}>
+                      Home
+                  </div>
+              
               </li>
               <li className="nav-item2">
                   <div  className="nav-links2" onClick={loadMyStory}>
@@ -130,10 +137,6 @@ const loadCreateStory = ()=>{
           
       </div>
     </nav>
-
-    <Routes>
-            <Route path="/LoginHome" element={<LoginHome/>}></Route>
-        </Routes>
 
             
 

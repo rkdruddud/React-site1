@@ -1,9 +1,8 @@
 import React,{useState} from "react";
 import "../loginEtcMenu/Registration.css";
 import axios from "axios";
-import { password } from "../server/lib/sessionOption";
 import { useNavigate} from "react-router-dom";
- 
+import {GiBowlSpiral} from 'react-icons/gi'; 
 
 
 const Registration = () =>{
@@ -21,7 +20,7 @@ const Registration = () =>{
     const [checkPwValid, setCheckPwValid] = useState(false);  // 비밀번호와 비밀번호 확인의 입력값이 같은지 확인하기 위함
     const [checkDuplicationID, setCheckDuplicationID] = useState(false);  // 아이디 중복 확인
 
-    const [idValue , setIdValue] = useState('');
+    
 
     const [division, setDivision] = useState(false); // 데이터 저장과 아이디 중복확인을 구분짓기 위함
 
@@ -151,12 +150,22 @@ const Registration = () =>{
         
     }
 
+    const goHome = ()=>{
+        window.history.replaceState(null,null,"/");
+        navigate("/");
+    }
+
+
     return (
 
         
 
         <div>
             <div className="RegistrationContainer">
+
+            <div className="goBackHome_Registraition" onClick={goHome}>
+            <div><GiBowlSpiral className="homeICON_Registration"></GiBowlSpiral>MyStory</div>
+          </div>
 
                 <div className="infoWrap">
                     <h2 className="texts">회원가입</h2>

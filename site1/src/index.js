@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './index.css';
 import App from './App';
-import Product from './menuScreens/Product';
-import Guide from './menuScreens/Guide';
 
 import SignUp from './menuScreens/SignUp';
 import Registration from './loginEtcMenu/Registration';
@@ -26,8 +24,6 @@ root.render(
     <BrowserRouter>
     <Routes>
      <Route path='/' element={<App />}>
-     <Route path='/Product' element={<Product/>} />
-     <Route path='/Guide' element={<Guide/>} />
       </Route> 
       
       <Route path='/AlbumIMG' element={<AlbumIMG/>} />

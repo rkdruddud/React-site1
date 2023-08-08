@@ -3,6 +3,7 @@ import "../loginEtcMenu/FindPW.css";
 import axios from "axios";
 import ChangePW from "./ChangePW";
 import {useNavigate} from "react-router-dom";
+import {GiBowlSpiral} from 'react-icons/gi';
 
 const FindPW = () =>{
    
@@ -77,9 +78,7 @@ const FindPW = () =>{
             setVisible(false);
             setText("인증번호 전송");
         }
-    }catch(e){
-     console.log(e);  
-     
+    }catch(e){ 
      alert("오류로 인한 인증번호 전송 실패"); 
     }
 
@@ -112,12 +111,21 @@ const FindPW = () =>{
     }
    }
 
- 
+   const goHome = ()=>{
+    window.history.replaceState(null,null,"/");
+    navigate("/");
+}
+
    
    
     return (
 
         <div className="pwContainer">
+
+<div className="goBackHome_FindPW" onClick={goHome}>
+            <div><GiBowlSpiral className="homeICON_FindPW"></GiBowlSpiral>MyStory</div>
+          </div>
+
             <div className="pwBoxWrap">
             <h2 className="Texts"> 비밀번호 찾기</h2>
             <hr></hr>

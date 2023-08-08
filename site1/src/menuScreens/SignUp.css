@@ -16,6 +16,40 @@
     
 }
 
+.goBackHome{
+    position:absolute;
+    font-size: 30px;
+    margin: 3rem;
+    top:0;
+    left: 0;
+    padding: 0;
+   z-index: 90;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 900px;
+
+}
+
+.goBackHome div{
+    color: black;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+
+}
+
+.homeICON{
+    color: black;
+    justify-self: start;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+   
+}
+
 .loginContainer{
     position: absolute;
     left: 50%;
