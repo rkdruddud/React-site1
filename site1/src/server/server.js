@@ -69,6 +69,9 @@ app.post('/Register', (req,res)=>{      // 회원정보 저장
                 if(error) throw error;
                 else{
                    console.log("회원가입성공");
+                   res.status(200).json({
+                    data: results.raws,
+                   })
                 }
             });
 
@@ -83,6 +86,9 @@ app.get('/Register', (req, res)=>{      // 아이디 중복 클릭시 아이디 
             
             if(data){
                 res.send(data);
+                res.status(200).json({
+                    data: data.raws
+                })
             }else {
                 console.log("아이디 사용가능");
             }
@@ -102,6 +108,9 @@ app.get('/Signup', (req, res)=>{        // 로그인 시 아이디와 비밀번�
 
         if(!error){
               res.send(data);
+            /*  res.status(200).json({
+                data:data
+              })*/
 
         }else{
             res.send(error);
@@ -119,6 +128,9 @@ app.post('/Signup', (req, res)=>{        // 로그인 성공시 DB의 login 값 
 
         if(!error){
             console.log("로그인 성공");
+            res.status(200).json({
+                data:data.raws
+            })
           
         }else{
             console.log(error);
@@ -136,7 +148,9 @@ app.post('/LogOut', (req, res)=>{        // 로그인 성공시 DB의 login 값 
     db.query('UPDATE `userinfo` SET `login`= ? WHERE `id` = ?;',['0', userID] ,  (error, data) =>{
 
         if(!error){
-            
+           res.status(200).json({
+                data: data
+            })
             console.log("로그아웃");
         }else{
             res.send(error);
@@ -153,6 +167,9 @@ app.get('/Findid', (req, res)=>{        // 아이디 찾기
         if(!error){
            
             res.send(data);
+           res.status(200).json({
+                data: data
+            })
         }else {
             
             res.send(error);
@@ -165,7 +182,9 @@ app.get('/FindPW', (req, res)=>{            // 비밀번호 변경을 위한 아
     
     db.query('SELECT email FROM `userinfo` WHERE `id` = ?', params, (error, data) =>{
         if(!error){
-            
+           /* res.status(200).json({
+                data: data
+            })*/
             res.send(data);
         }else {
             
@@ -216,6 +235,11 @@ app.post('/ChangePW', (req, res)=>{        // 로그인 성공시 DB의 login �
         if(error){
             res.send(error);
         }
+        else{
+            /* res.status(200).json({
+                data: data
+            })*/
+        }
 
     });
 });
@@ -235,6 +259,10 @@ const storage = multer.diskStorage({
     
             if(error){
                 res.send(error);
+            }else{
+              /* res.status(200).json({
+                data: data
+            })*/
             }
     
         });
@@ -260,7 +288,9 @@ app.get("/MyStory",(req,res)=>{
     
     db.query('SELECT * FROM `album` WHERE `userID` = ?', params, (error, data) =>{
         if(!error){
-            
+           /* res.status(200).json({
+                data: data
+            })*/
             res.send(data);
         }else {
             res.send("none");
@@ -278,7 +308,9 @@ app.get("/AlbumIMG",(req,res)=>{
 
     db.query('SELECT * FROM `album` WHERE `userID` = ? AND `title`=?', [userID, title], (error, data) =>{
         if(!error){
-            
+            /* res.status(200).json({
+                data: data
+            })*/
             res.send(data);
         }else {
             res.send("none");
@@ -298,6 +330,10 @@ app.post("/AlbumIMG",(req,res)=>{
     db.query('DELETE FROM `album` WHERE `userID` = ? AND `title`=? AND `fileName`=?' , [userID, title, fileName], (error, data) =>{
         if(error){
             res.send(error);
+        }else{
+           /* res.status(200).json({
+                data: data
+            })*/
         }
     });
 
@@ -335,7 +371,9 @@ const storage2 = multer.diskStorage({
         db.query('INSERT INTO album (userID, title, date, fileName) VALUES(?,?,?,?);',[userID, title, date, file.originalname] ,  (error, data) =>{
     
             if(!error){
-            
+                /* res.status(200).json({
+                data: data
+            })*/
                 console.log("파일 업로드 완료");
               
             }else{
