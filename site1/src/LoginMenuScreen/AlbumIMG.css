@@ -270,7 +270,7 @@
 
 .imgcard div{
     margin-left: 2.5%;
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 .imgcard:hover{

@@ -16,7 +16,7 @@
 .UploadContentWrap {
 
     position: absolute;
-    height: 33rem;
+    height:58%;
     width: 120vh;
     left: 50%;
     bottom: 45%;
@@ -151,8 +151,8 @@ transition: 2s;
     position: absolute;
     left: 50%;
     bottom: 75px;
-    width: 95vh;
-    height: 40vh;
+    width: 80%;
+    height: 65%;
     transform: translate(-50%);
     }
 
@@ -258,12 +258,13 @@ transition: 2s;
 
 .uploadButton{
     position: absolute;
-    left: 320px;
-    bottom: 10px;
+    left: 35%;
+    bottom: -10px;
     width: 8rem;
     height: 2.5rem;
     border-radius: 4px;
     color: #fff;
+    
     border: 1px solid #fff;
     background-color: rgba(119, 5, 134, 0.712);
     cursor: pointer;
@@ -271,8 +272,8 @@ transition: 2s;
 
 .cancleButton{
     position: absolute;
-    left: 500px;
-    bottom: 10px;   
+    left: 55%;
+    bottom: -10px;
     width: 8rem;
     height: 2.5rem;
     border-radius: 4px;

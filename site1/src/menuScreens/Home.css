@@ -105,9 +105,9 @@ overflow: hidden;
 
 .camera{
     position: absolute;
-    width: 30%;
-    height: 40%;
-    left: 40%;
+    width: 50vh;
+    height: 40vh;
+    left: 38%;
     bottom: 35%;
     transform: rotateZ(40deg) translate(-50%, 50%);
     z-index: 4;
